@@ -1,6 +1,7 @@
 import ErrorPage from "./ErrorPage";
-import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
+import Me from "./Me";
+import Cart from "./Cart";
 
-export { ErrorPage, Home, Login, Register};
+export { ErrorPage, Login, Register, Me, Cart };
