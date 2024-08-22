@@ -43,7 +43,7 @@ export default function Register() {
   }
 
   return (
-    <div className="flex flex-wrap items-center min-h-[calc(100vh-3rem)] justify-around">
+    <div className="flex flex-wrap items-center min-h-[calc(100vh-4rem)] justify-around">
       <div className="flex flex-col m-auto">
         <p className="text-6xl font-redressed md:text-8xl"> Get Your Perfect Fit!</p>
       </div>
