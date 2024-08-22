@@ -2,39 +2,21 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 import { getAllProducts } from "@/data/products/loaders.js";
-import { getAllOrders } from "@/data/orders/loaders.js";
-
-import {
-  createProduct,
-  updateProduct,
-  deleteProduct,
-} from "@/data/products/actions.js";
-import {
-  createOrder,
-  updateOrder,
-  deleteOrder,
-} from "@/data/orders/actions.js";
 
 import { RootLayout, ProtectLayout } from "@/layout";
 import Loading from "@/components/Loading.jsx";
 
-const ErrorPage = lazy(() => import("@/pages/ErrorPage"));
-const Login = lazy(() => import("@/pages/Login"));
-const Register = lazy(() => import("@/pages/Register"));
-const Home = lazy(() => import("@/pages/Home"));
-const Me = lazy(() => import("@/pages/Me"));
+const About = lazy(()=>import("@/pages/About.jsx"))
+const Cart = lazy(()=>import("@/pages/Cart.jsx"))
+const Contact = lazy(()=>import("@/pages/Contact.jsx"))
+const Detail = lazy(()=>import("@/pages/Detail.jsx"))
+const ErrorPage = lazy(()=>import("@/pages/ErrorPage.jsx"))
+const Home = lazy(()=>import("@/pages/Home.jsx"))
+const Login = lazy(()=>import("@/pages/Login.jsx"))
+const Me = lazy(()=>import("@/pages/Me.jsx"))
+const Products = lazy(()=>import("@/pages/Products.jsx"))
+const Register = lazy(()=>import("@/pages/Register.jsx"))
 
-const Products = lazy(() => import("@/pages/product/index.jsx"));
-const Product = lazy(() => import("@/pages/product/Product"));
-const UpdateProductForm = lazy(() => import("@/pages/product/UpdateForm"));
-const CreateProductForm = lazy(() => import("@/pages/product/CreateForm"));
-const DeleteProductForm = lazy(() => import("@/pages/product/DeleteForm"));
-
-const Cart = lazy(() => import("@/pages/order/Cart"));
-const Order = lazy(() => import("@/pages/order/Order"));
-const UpdateOrderForm = lazy(() => import("@/pages/order/UpdateForm"));
-const CreateOrderForm = lazy(() => import("@/pages/order/CreateForm"));
-const DeleteOrderForm = lazy(() => import("@/pages/order/DeleteForm"));
 
 export default function App() {
   const router = createBrowserRouter([
@@ -60,6 +42,14 @@ export default function App() {
           loader: getAllProducts,
         },
         {
+          path: "/products/:id",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Detail />
+            </Suspense>
+          ),
+        },
+        {
           path: "/login",
           element: (
             <Suspense fallback={<Loading />}>
@@ -75,112 +65,39 @@ export default function App() {
             </Suspense>
           ),
         },
-
         {
-          index: "",
+          path: "/about",
           element: (
             <Suspense fallback={<Loading />}>
-              <ProtectLayout />
+              <About />
             </Suspense>
           ),
-          children: [
-            {
-              path: "/me",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Me />
-                </Suspense>
-              ),
-              loader: getAllProducts,
-            },
-  
-            {
-              path: "/products/:id",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Product />
-                </Suspense>
-              ),
-              loader: getAllProducts,
-            },
-            {
-              path: "/products/:id/update",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <UpdateProductForm />
-                </Suspense>
-              ),
-              action: updateProduct,
-              loader: getAllProducts,
-            },
-            {
-              path: "/products/create",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <CreateProductForm />
-                </Suspense>
-              ),
-              action: createProduct,
-            },
-            {
-              path: "/products/:id/delete",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <DeleteProductForm />
-                </Suspense>
-              ),
-              action: deleteProduct,
-              loader: getAllProducts,
-            },
-            {
-              path: "/orders",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Cart />
-                </Suspense>
-              ),
-              loader: getAllOrders,
-            },
-            {
-              path: "/orders/:id",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Order />
-                </Suspense>
-              ),
-              loader: getAllOrders,
-            },
-            {
-              path: "/orders/:id/update",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <UpdateOrderForm />
-                </Suspense>
-              ),
-              action: updateOrder,
-              loader: getAllOrders,
-            },
-            {
-              path: "/orders/create",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <CreateOrderForm />
-                </Suspense>
-              ),
-              action: createOrder,
-            },
-            {
-              path: "/orders/:id/delete",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <DeleteOrderForm />
-                </Suspense>
-              ),
-              action: deleteOrder,
-              loader: getAllOrders,
-            },
-          ],
         },
+        {
+          path: "/contact",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Contact />
+            </Suspense>
+          ),
+        },
+        {
+          path: "/cart",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Cart />
+            </Suspense>
+          ),
+          loader: getAllProducts,
+        },
+        {
+          path: "/me",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Me />
+            </Suspense>
+          ),
+        }
       ],
       errorElement: (
         <Suspense fallback={<Loading />}>
