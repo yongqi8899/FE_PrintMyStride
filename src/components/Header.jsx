@@ -11,7 +11,7 @@ export default function Header() {
     detailsRef.current.removeAttribute("open");
   };
   return (
-    <header className="sticky top-0 flex align-middle navbar bold">
+    <header className="sticky top-0 flex align-middle navbar bold font-redressed">
       <div className="flex-1">
         <Link to="/" className="text-xl btn">
           <h1>PrintMyStride</h1>
@@ -19,6 +19,28 @@ export default function Header() {
       </div>
       <nav className="flex-none">
         <ul className="flex items-center gap-8 mr-6">
+        <li>
+            {" "}
+            <Link
+              to="/about"
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost"
+            >
+              About
+            </Link>
+          </li>
+          <li>
+            {" "}
+            <Link
+              to="/contact"
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost"
+            >
+              Contact
+            </Link>
+          </li>
           <li>
             {" "}
             <Link

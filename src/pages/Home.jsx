@@ -1,7 +1,7 @@
 import ProductsCard from "../components/ProductsCard";
 const Home = () => {
   return (
-    <div className="flex flex-col gap-10 m-10">
+    <div className="flex flex-col gap-10 m-10 ">
 
       {/* <div className="grandient-lisa-dark-90 "></div> */}
       {/* <div className="grandient-tiffany"></div> */}

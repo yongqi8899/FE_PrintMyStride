@@ -6,18 +6,26 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-blue': 'linear-gradient(to right, #2E4CEE,#221EBF, #040F75)',
-        'gradient-lisa': 'linear-gradient(to right,  #2E4CEE, #763AF5, #A604F2)',
-        'gradient-lisa-transparent': 'linear-gradient(130deg, rgba(77, 73, 191, .8), rgba(255, 255, 255, .2))',
-        'gradient-tiffany-transparent': 'linear-gradient(30deg, rgba(5, 219, 242, .8), rgba(255, 255, 255, .2))',
-        'custom-gradient': 'linear-gradient(30deg, #190061 0%, #0A1B30 100%)',
-        'custom-gradient-90': 'linear-gradient(90deg, #190061 0%, #0A1B30 100%)',
+        "gradient-blue": "linear-gradient(to right, #2E4CEE,#221EBF, #040F75)",
+        "gradient-lisa":
+          "linear-gradient(to right,  #2E4CEE, #763AF5, #A604F2)",
+        "gradient-lisa-transparent":
+          "linear-gradient(130deg, rgba(77, 73, 191, .8), rgba(255, 255, 255, .2))",
+        "gradient-tiffany-transparent":
+          "linear-gradient(30deg, rgba(5, 219, 242, .8), rgba(255, 255, 255, .2))",
+        "custom-gradient": "linear-gradient(30deg, #190061 0%, #0A1B30 100%)",
+        "custom-gradient-90":
+          "linear-gradient(90deg, #190061 0%, #0A1B30 100%)",
       },
+    },
+    fontFamily: {
+      roboto: ["Roboto", "sans-serif"],
+      redressed: ["Redressed", "cursive"],
     },
   },
   plugins: [
-    require('daisyui'),
-    function({ addComponents }) {
+    require("daisyui"),
+    function ({ addComponents }) {
       addComponents({
         // '.grandient-lisa': {
         //   '@apply absolute w-[500px] h-[500px] bg-gradient-lisa-transparent rounded-full top-[20%] left-[-10%]': {},
@@ -31,8 +39,9 @@ export default {
         // '.grandient-lisa-dark-90': {
         //   '@apply absolute  w-[200px] h-[200px] bg-custom-gradient-90 rounded-full': {},
         // },
-        '.btn-gradient': {
-          '@apply bg-gradient-blue hover:bg-gradient-lisa text-white rounded text-center py-1': {},
+        ".btn-gradient": {
+          "@apply bg-gradient-blue hover:bg-gradient-lisa text-white rounded text-center py-1":
+            {},
         },
       });
     },
@@ -53,9 +62,6 @@ export default {
           secondary: "#EFB51F",
           accent: "#37cdbe",
           neutral: "#3d4451",
-        },
-        fontFamily: {
-       
         },
       },
     ],
