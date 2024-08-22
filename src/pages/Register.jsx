@@ -47,7 +47,7 @@ export default function Register() {
       <div className="flex flex-col m-auto">
         <p className="text-6xl font-redressed md:text-8xl"> Get Your Perfect Fit!</p>
       </div>
-      <div className="p-10 m-auto border rounded-2xl md:max-w-2/5">
+      <div className="w-4/5 p-10 m-auto border rounded-2xl md:w-2/5 ">
         <form className="flex flex-col gap-3 " onSubmit={handleSubmit}>
           <h1 className="text-2xl font-bold">Signup</h1>
           <p>Just some details to get you in.!</p>
