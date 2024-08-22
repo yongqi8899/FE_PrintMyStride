@@ -55,6 +55,7 @@ export default {
           secondary: "#EFB51F",
           accent: "#37cdbe",
           neutral: "#3d4451",
+          "base-content": "white",
         },
         light: {
           ...themes.light,
@@ -62,6 +63,7 @@ export default {
           secondary: "#EFB51F",
           accent: "#37cdbe",
           neutral: "#3d4451",
+          "base-content": "black",
         },
       },
     ],
