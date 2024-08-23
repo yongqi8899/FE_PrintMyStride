@@ -100,7 +100,7 @@ export default function Login() {
           <small>
             Don&apos;t have an account?{" "}
             <Link to="/register" className="text-primary hover:underline">
-              Register!
+              Signup!
             </Link>
           </small>
         </form>

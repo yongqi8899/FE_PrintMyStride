@@ -1,10 +1,14 @@
 const About = () => {
   return (
-    <div className="flex gap-10 m-10">
+    <div className="flex flex-wrap gap-10 m-10 md:flex-nowrap">
       <div className="w-full md:w-1/2">
         <h2 className="text-4xl font-bold">INTRODUCTION</h2>
-        <div>
+        <div className="flex gap-10">
           <h2 className="text-4xl font-thin">TO PrintMyStride</h2>
+          <div class="flex items-center space-x-2">
+            <div class="border-t-2 border-dashed border-base-content w-20 md:w-60"></div>
+            <div class="transform rotate-45 border-t-2 border-r-2 border-base-content w-3 h-3"></div>
+          </div>
         </div>
         <div>
           <img />
@@ -24,9 +28,9 @@ const About = () => {
           to provide footwear that helps you step confidently into a healthier,
           more comfortable future.
         </p>
-        <h3 className="mt-10">ABOUT</h3>
-        <h2 className="mt-5">PrintMyStride</h2>
-        <p className="mt-5">
+        <h3 className="mt-10 text-xl font-bold">ABOUT</h3>
+        <h2 className="text-xl">PrintMyStride</h2>
+        <p className="mt-4">
           PrintMyStride is a pioneering footwear brand dedicated to solving the
           challenges posed by incorrect walking posture. We combine advanced 3D
           printing technology with a deep understanding of biomechanics to
