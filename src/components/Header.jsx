@@ -3,14 +3,14 @@ import { useRef, useState } from "react";
 import { useAuth } from "@/context/index.js";
 
 export default function Header() {
-  const location = useLocation()
+  const location = useLocation();
   const [active, setActive] = useState(location.pathname);
   const { isAuthenticated, logout } = useAuth();
   const detailsRef = useRef(null);
   const navigate = useNavigate();
-const handleClick = (path) => {
-  setActive(path);
-};
+  const handleClick = (path) => {
+    setActive(path);
+  };
   const closeDetails = () => {
     detailsRef.current.removeAttribute("open");
   };
@@ -59,10 +59,11 @@ const handleClick = (path) => {
           {isAuthenticated ? (
             <details ref={detailsRef} className="flex items-center ">
               <summary className="flex items-center">
-                <img
-                  src="https://img.icons8.com/?size=100&id=82751&format=png&color=000000"
-                  className="w-6"
-                />
+                <div className="avatar">
+                  <div className="w-10 rounded-full">
+                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                  </div>
+                </div>
               </summary>
               <Link to="/me" onClick={closeDetails}>
                 <p> Me</p>
