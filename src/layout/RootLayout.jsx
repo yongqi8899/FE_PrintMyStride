@@ -11,6 +11,7 @@ import {
 import { useLoaderData } from "react-router-dom";
 
 export default function RootLayout() {
+  const products = useLoaderData();
   return (
     <div>
       <ToastContainer position="top-right" autoClose={1500} theme="light" />
@@ -18,7 +19,7 @@ export default function RootLayout() {
         <ThemeContextProvider>
           <CartProvider>
             <Header />
-            <Outlet />
+            <Outlet context={products}/>
             <Footer />
           </CartProvider>
         </ThemeContextProvider>

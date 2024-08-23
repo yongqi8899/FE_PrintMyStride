@@ -1,12 +1,16 @@
-import { Link, useNavigate, redirect } from "react-router-dom";
-import { useRef } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useRef, useState } from "react";
 import { useAuth } from "@/context/index.js";
 
 export default function Header() {
+  const location = useLocation()
+  const [active, setActive] = useState(location.pathname);
   const { isAuthenticated, logout } = useAuth();
   const detailsRef = useRef(null);
   const navigate = useNavigate();
-
+const handleClick = (path) => {
+  setActive(path);
+};
   const closeDetails = () => {
     detailsRef.current.removeAttribute("open");
   };

@@ -14,7 +14,6 @@ const ErrorPage = lazy(()=>import("@/pages/ErrorPage.jsx"))
 const Home = lazy(()=>import("@/pages/Home.jsx"))
 const Login = lazy(()=>import("@/pages/Login.jsx"))
 const Me = lazy(()=>import("@/pages/Me.jsx"))
-const Products = lazy(()=>import("@/pages/Products.jsx"))
 const Register = lazy(()=>import("@/pages/Register.jsx"))
 
 
@@ -23,6 +22,7 @@ export default function App() {
     {
       path: "/",
       element: <RootLayout />,
+      loader: getAllProducts,
       children: [
         {
           index: true,
@@ -31,15 +31,6 @@ export default function App() {
               <Home />
             </Suspense>
           ),
-        },
-        {
-          path: "/products",
-          element: (
-            <Suspense fallback={<Loading />}>
-              <Products />
-            </Suspense>
-          ),
-          loader: getAllProducts,
         },
         {
           path: "/products/:id",
