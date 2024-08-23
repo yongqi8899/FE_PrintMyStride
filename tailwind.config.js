@@ -19,7 +19,7 @@ export default {
       },
     },
     fontFamily: {
-      roboto: ["Roboto", "sans-serif"],
+      sans: ['Roboto', 'ui-sans-serif', 'system-ui'],
       redressed: ["Redressed", "cursive"],
     },
   },
