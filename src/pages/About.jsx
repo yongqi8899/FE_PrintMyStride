@@ -1,6 +1,6 @@
-import img from "@/img/shoe1.png"
+import img from "@/img/shoe1.png";
+import { Link } from "react-router-dom";
 const About = () => {
-  
   return (
     <div className="flex flex-wrap gap-10 m-10 md:flex-nowrap">
       <div className="w-full md:w-1/2">
@@ -31,7 +31,7 @@ const About = () => {
           more comfortable future.
         </p>
         <h3 className="mt-10 text-xl font-bold">ABOUT</h3>
-        <h2 className="text-xl">PrintMyStride</h2>
+        <h2 className="mt-5 text-xl">PrintMyStride</h2>
         <p className="mt-4">
           PrintMyStride is a pioneering footwear brand dedicated to solving the
           challenges posed by incorrect walking posture. We combine advanced 3D
@@ -51,6 +51,9 @@ const About = () => {
           discomfort. Our mission is to empower you to take every step
           comfortably and stylishly, with footwear that’s as unique as you are.
         </p>
+        <Link to="/contact" role="button" className="w-2/3 mt-5 btn btn-gradient">
+          Contact us
+        </Link>
       </div>
     </div>
   );

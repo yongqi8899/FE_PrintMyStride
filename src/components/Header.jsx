@@ -27,7 +27,7 @@ export default function Header() {
     detailsRef.current.removeAttribute("open");
   };
   return (
-    <header className="sticky top-0 flex text-xl align-middle navbar bold font-redressed">
+    <header className="sticky top-0 flex text-xl align-middle navbar bold font-redressed bg-neutral">
       <div className="flex-1">
         <Link to="/">
           <h1 className="text-4xl">PrintMyStride</h1>
