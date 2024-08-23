@@ -1,12 +1,10 @@
 import { useOutletContext, Link } from "react-router-dom";
-import ProductsCard from "../components/ProductsCard";
+import ProductsCard from "@/components/ProductsCard";
 const Home = () => {
   const products = useOutletContext();
-  console.log(products);
 
   return (
     <div className="flex flex-col gap-10 m-10 ">
-      <button className="w-20 btn-gradient">hello</button>
       <div className="grid grid-cols-3 gap-4">
         {products &&
           products.map((product) => (

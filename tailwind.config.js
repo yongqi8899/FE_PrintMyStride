@@ -6,9 +6,9 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-blue": "linear-gradient(to right, #2E4CEE,#221EBF, #040F75)",
+        "gradient-blue": "linear-gradient(to right, rgb(51 76 255),rgb(34 30 191), rgb(4 15 117))",
         "gradient-lisa":
-          "linear-gradient(to right,  #2E4CEE, #763AF5, #A604F2)",
+          "linear-gradient(to right,  rgb(46 76 238), rgb(118 58 245), rgb(166 4 242))",
         "gradient-lisa-transparent":
           "linear-gradient(130deg, rgba(77, 73, 191, .8), rgba(255, 255, 255, .2))",
         "gradient-tiffany-transparent":
