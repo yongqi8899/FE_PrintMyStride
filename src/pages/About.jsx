@@ -1,4 +1,6 @@
+import img from "@/img/shoe1.png"
 const About = () => {
+  
   return (
     <div className="flex flex-wrap gap-10 m-10 md:flex-nowrap">
       <div className="w-full md:w-1/2">
@@ -11,7 +13,7 @@ const About = () => {
           </div>
         </div>
         <div>
-          <img />
+          <img src={img} alt="a image about shoe" />
         </div>
       </div>
       <div className="w-full md:w-1/2">
