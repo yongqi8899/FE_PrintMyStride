@@ -13,4 +13,4 @@ const useAuth = () => {
 }   
 
 
-export {AuthContext, AuthContextProvider, useAuth, ThemeContextProvider,  CartProvider, CartContext}
+export {AuthContext, AuthContextProvider, useAuth, CartProvider, CartContext}

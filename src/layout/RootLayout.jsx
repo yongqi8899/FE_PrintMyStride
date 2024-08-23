@@ -5,7 +5,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import {
   AuthContextProvider,
-  ThemeContextProvider,
   CartProvider,
 } from "@/context";
 import { useLoaderData } from "react-router-dom";
@@ -16,13 +15,11 @@ export default function RootLayout() {
     <div>
       <ToastContainer position="top-right" autoClose={1500} theme="light" />
       <AuthContextProvider>
-        <ThemeContextProvider>
           <CartProvider>
             <Header />
             <Outlet context={products}/>
             <Footer />
           </CartProvider>
-        </ThemeContextProvider>
       </AuthContextProvider>
     </div>
   );
