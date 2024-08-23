@@ -45,9 +45,12 @@ export default function Register() {
   return (
     <div className="flex flex-wrap items-center min-h-[calc(100vh-4rem)] justify-around">
       <div className="flex flex-col m-auto">
-        <p className="text-6xl font-redressed md:text-8xl"> Get Your Perfect Fit!</p>
+        <p className="text-6xl font-redressed md:text-8xl">
+          {" "}
+          Get Your Perfect Fit!
+        </p>
       </div>
-      <div className="w-4/5 p-10 m-auto border rounded-2xl md:w-2/5 ">
+      <div className="w-4/5 p-10 m-auto border rounded-2xl md:w-2/5 bg-neutral">
         <form className="flex flex-col gap-3 " onSubmit={handleSubmit}>
           <h1 className="text-2xl font-bold">Signup</h1>
           <p>Just some details to get you in.!</p>

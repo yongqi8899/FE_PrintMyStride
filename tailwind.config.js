@@ -60,7 +60,7 @@ export default {
         light: {
           ...themes.light,
           primary: "#040F75",
-          secondary: "#EFB51F",
+          secondary: "#F49C80",
           neutral: "#E6F0ED",
           "base-content": "#016D48",
         },

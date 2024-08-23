@@ -29,7 +29,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 flex text-xl align-middle navbar bold font-redressed">
       <div className="flex-1">
-        <Link to="/" className="btn">
+        <Link to="/">
           <h1 className="text-4xl">PrintMyStride</h1>
         </Link>
       </div>
@@ -38,8 +38,17 @@ export default function Header() {
           <li>
             {" "}
             <Link
+              to="/"
+              role="button"
+              className="text-xl btn btn-ghost"
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            {" "}
+            <Link
               to="/about"
-              tabIndex={0}
               role="button"
               className="text-xl btn btn-ghost"
             >
@@ -50,7 +59,6 @@ export default function Header() {
             {" "}
             <Link
               to="/contact"
-              tabIndex={0}
               role="button"
               className="text-xl btn btn-ghost"
             >
@@ -61,7 +69,6 @@ export default function Header() {
             {" "}
             <Link
               to="/cart"
-              tabIndex={0}
               role="button"
               className="text-xl btn btn-ghost"
             >
