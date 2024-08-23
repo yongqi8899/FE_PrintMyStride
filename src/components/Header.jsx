@@ -1,13 +1,26 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useRef, useState } from "react";
-import { useAuth } from "@/context/index.js";
+import { useRef, useState, useEffect } from "react";
+import { useAuth} from "@/context/index.js";
+
 
 export default function Header() {
   const location = useLocation();
   const [active, setActive] = useState(location.pathname);
   const { isAuthenticated, logout } = useAuth();
+  
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme)
+  }, [theme]);
+  const handleToggle = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  }
+
   const detailsRef = useRef(null);
   const navigate = useNavigate();
+
   const handleClick = (path) => {
     setActive(path);
   };
@@ -82,12 +95,13 @@ export default function Header() {
             </details>
           )}
           <li>
-            <label className="swap swap-rotate">
+            <label className="swap swap-rotate" >
               {/* this hidden checkbox controls the state */}
               <input
                 type="checkbox"
                 className="theme-controller"
                 value="synthwave"
+                onClick={handleToggle}
               />
 
               {/* sun icon */}

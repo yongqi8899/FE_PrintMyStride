@@ -1,6 +1,5 @@
 import {createContext, useContext} from 'react';
 import AuthContextProvider from './AuthContextProvider';
-import ThemeContextProvider from './ThemeContext';
 import CartProvider, { CartContext } from './CartProvider';
 
 const AuthContext = createContext()
@@ -12,5 +11,6 @@ const useAuth = () => {
     }
     return context
 }   
+
 
 export {AuthContext, AuthContextProvider, useAuth, ThemeContextProvider,  CartProvider, CartContext}
