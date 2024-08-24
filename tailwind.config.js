@@ -24,27 +24,7 @@ export default {
     },
   },
   plugins: [
-    require("daisyui"),
-    function ({ addComponents }) {
-      addComponents({
-        // '.grandient-lisa': {
-        //   '@apply absolute w-[500px] h-[500px] bg-gradient-lisa-transparent rounded-full top-[20%] left-[-10%]': {},
-        // },
-        // '.grandient-tiffany': {
-        //   '@apply absolute w-[500px] h-[500px] bg-gradient-tiffany-transparent rounded-full ': {},
-        // },
-        // '.grandient-lisa-dark': {
-        //   '@apply absolute w-[200px] h-[200px] bg-custom-gradient rounded-full bottom-[5%] right-[5%]': {},
-        // },
-        // '.grandient-lisa-dark-90': {
-        //   '@apply absolute  w-[200px] h-[200px] bg-custom-gradient-90 rounded-full': {},
-        // },
-        ".btn-gradient": {
-          "@apply bg-gradient-blue hover:bg-gradient-lisa text-white rounded text-center py-1":
-            {},
-        },
-      });
-    },
+    require("daisyui")
   ],
   daisyui: {
     themes: [
@@ -53,7 +33,6 @@ export default {
           ...themes.dark,
           primary: "#334cff",
           secondary: "#EFB51F",
-          accent: "#37cdbe",
           neutral: "#1D232A",
           "base-content": "white",
         },
