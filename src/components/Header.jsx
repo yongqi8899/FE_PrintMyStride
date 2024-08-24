@@ -1,4 +1,4 @@
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { useAuth } from "@/context/index.js";
 
@@ -29,51 +29,51 @@ export default function Header() {
   return (
     <header className="sticky top-0 flex text-xl align-middle navbar bold font-redressed bg-neutral">
       <div className="flex-1">
-        <Link to="/">
+        <NavLink to="/">
           <h1 className="text-4xl">PrintMyStride</h1>
-        </Link>
+        </NavLink>
       </div>
       <nav className="flex-none">
         <ul className="flex items-center gap-8 mr-6 item-center">
           <li>
             {" "}
-            <Link
+            <NavLink
               to="/"
               role="button"
               className="text-xl btn btn-ghost"
             >
               Home
-            </Link>
+            </NavLink>
           </li>
           <li>
             {" "}
-            <Link
+            <NavLink
               to="/about"
               role="button"
               className="text-xl btn btn-ghost"
             >
               About
-            </Link>
+            </NavLink>
           </li>
           <li>
             {" "}
-            <Link
+            <NavLink
               to="/contact"
               role="button"
               className="text-xl btn btn-ghost"
             >
               Contact
-            </Link>
+            </NavLink>
           </li>
           <li>
             {" "}
-            <Link
+            <NavLink
               to="/cart"
               role="button"
               className="text-xl btn btn-ghost"
             >
               Cart
-            </Link>
+            </NavLink>
           </li>
           {isAuthenticated ? (
             <details ref={detailsRef} className="flex items-center ">
@@ -84,20 +84,20 @@ export default function Header() {
                   </div>
                 </div>
               </summary>
-              <Link to="/me" onClick={closeDetails}>
+              <NavLink to="/me" onClick={closeDetails}>
                 <p> Me</p>
-              </Link>
-              <Link onClick={logout}>Logout</Link>
+              </NavLink>
+              <NavLink onClick={logout}>Logout</NavLink>
             </details>
           ) : (
             <details ref={detailsRef} className="flex items-center ">
               <summary>Login</summary>
-              <Link to="/login" onClick={closeDetails}>
+              <NavLink to="/login" onClick={closeDetails}>
                 Login
-              </Link>
-              <Link to="/register" onClick={closeDetails}>
+              </NavLink>
+              <NavLink to="/register" onClick={closeDetails}>
                 Register
-              </Link>
+              </NavLink>
             </details>
           )}
           <li>

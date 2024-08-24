@@ -1,7 +1,7 @@
 import Img from "@/components/Img";
 const ProductsCard = ({ src, title, children }) => {
   return (
-    <div className="card glass w-96 hover:drop-shadow-[0_0_5px_#37cdbe] bg-neutral">
+    <div className="card glass w-96 hover:drop-shadow-[0_-5px_5px_#37cdbe] bg-neutral">
       <figure>
         <Img src={src} alt={title} />
       </figure>
