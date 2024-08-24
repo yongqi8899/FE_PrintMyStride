@@ -39,7 +39,7 @@ export default function Login() {
     return <Navigate to={location.state?.next || "/"} />;
   }
   return (
-    <div className="flex flex-wrap items-center min-h-[calc(100vh-3rem)] justify-around">
+    <div className="flex flex-wrap items-center min-h-[calc(100vh-3rem)] justify-around z-10">
       <div className="flex flex-col m-auto">
         <p className="text-6xl font-redressed md:text-8xl">Welcome Back!</p>
       </div>
@@ -88,7 +88,7 @@ export default function Login() {
               placeholder="Password"
             />
           </label>
-          <button className="btn btn-gradient" disabled={loading}>
+          <button className="btn btn-gradient-blue" disabled={loading}>
             Login
           </button>
           <div className="relative flex items-center my-1">
@@ -104,8 +104,6 @@ export default function Login() {
             </Link>
           </small>
         </form>
-        <div className="grandient-lisa"></div>
-        <div className="grandient-tiffany"></div>
       </div>
     </div>
   );

@@ -135,7 +135,7 @@ export default function Register() {
             />
           </label>
 
-          <button className="btn btn-gradient" disabled={loading}>
+          <button className="btn btn-gradient-blue" disabled={loading}>
             Create Account
           </button>
           <div className="relative flex items-center my-1">
@@ -150,8 +150,6 @@ export default function Register() {
             </Link>
           </small>
         </form>
-        <div className="grandient-lisa"></div>
-        <div className="grandient-tiffany"></div>
       </div>
     </div>
   );

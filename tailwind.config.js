@@ -6,26 +6,20 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-blue": "linear-gradient(to right, color(a98-rgb 0.24 0.3 0.98),rgb(34 30 191), rgb(4 15 117))",
+        "gradient-blue":
+          "linear-gradient(to right, color(a98-rgb 0.24 0.3 0.98),rgb(34 30 191), rgb(4 15 117))",
         "gradient-lisa":
           "linear-gradient(to right,  rgb(46 76 238), rgb(118 58 245), rgb(166 4 242))",
-        "gradient-lisa-transparent":
-          "linear-gradient(130deg, rgba(77, 73, 191, .8), rgba(255, 255, 255, .2))",
-        "gradient-tiffany-transparent":
-          "linear-gradient(30deg, rgba(5, 219, 242, .8), rgba(255, 255, 255, .2))",
-        "custom-gradient": "linear-gradient(30deg, #190061 0%, #0A1B30 100%)",
-        "custom-gradient-90":
-          "linear-gradient(90deg, #190061 0%, #0A1B30 100%)",
+        "gradient-green": "linear-gradient(135deg, #00739C, #81B0B2, #016D48)",
+        "gradient-pink": "linear-gradient(135deg, #F49C80, #81B0B2, #F49C80)",
       },
     },
     fontFamily: {
-      sans: ['Roboto', 'ui-sans-serif', 'system-ui'],
+      sans: ["Roboto", "ui-sans-serif", "system-ui"],
       redressed: ["Redressed", "cursive"],
     },
   },
-  plugins: [
-    require("daisyui")
-  ],
+  plugins: [require("daisyui")],
   daisyui: {
     themes: [
       {

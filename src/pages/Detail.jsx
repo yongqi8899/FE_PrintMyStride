@@ -28,7 +28,7 @@ const Detail = () => {
           </div>
           <div className="justify-between card-actions">
             <button
-              className="w-full btn btn-gradient"
+              className="w-full btn btn-gradient-blue"
               onClick={handleAddToCart}
             >
               Add to Shopping Cart{" "}

@@ -1,10 +1,8 @@
-import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { useAuth } from "@/context/index.js";
+import { HashLink as NavLink } from 'react-router-hash-link';
 
 export default function Header() {
-  const location = useLocation();
-  const [active, setActive] = useState(location.pathname);
   const { isAuthenticated, logout } = useAuth();
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
@@ -18,23 +16,19 @@ export default function Header() {
   };
 
   const detailsRef = useRef(null);
-  const navigate = useNavigate();
 
-  const handleClick = (path) => {
-    setActive(path);
-  };
   const closeDetails = () => {
     detailsRef.current.removeAttribute("open");
   };
   return (
-    <header className="sticky top-0 flex text-xl align-middle navbar bold font-redressed bg-neutral">
+    <header className="sticky top-0 text-xl navbar bold font-redressed bg-neutral">
       <div className="flex-1">
         <NavLink to="/">
           <h1 className="text-4xl">PrintMyStride</h1>
         </NavLink>
       </div>
       <nav className="flex-none">
-        <ul className="flex items-center gap-8 mr-6 item-center">
+        <ul className="gap-8 navbar">
           <li>
             {" "}
             <NavLink
@@ -75,6 +69,7 @@ export default function Header() {
               Cart
             </NavLink>
           </li>
+          <li>
           {isAuthenticated ? (
             <details ref={detailsRef} className="flex items-center ">
               <summary className="flex items-center">
@@ -100,6 +95,7 @@ export default function Header() {
               </NavLink>
             </details>
           )}
+          </li>
           <li>
             <label className="swap swap-rotate">
               {/* this hidden checkbox controls the state */}

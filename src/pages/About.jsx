@@ -7,9 +7,9 @@ const About = () => {
         <h2 className="text-4xl font-bold">INTRODUCTION</h2>
         <div className="flex gap-10">
           <h2 className="text-4xl font-thin">TO PrintMyStride</h2>
-          <div class="flex items-center space-x-2">
-            <div class="border-t-2 border-dashed border-base-content w-20 md:w-60"></div>
-            <div class="transform rotate-45 border-t-2 border-r-2 border-base-content w-3 h-3"></div>
+          <div class="flex items-center space-x-2 z-1">
+            <div class="border-t-2 border-dashed border-base-content w-20 md:w-55"></div>
+            <div class="transform rotate-45 border-t-2 border-r-2 border-base-content w-3 h-3 z-1"></div>
           </div>
         </div>
         <div>
@@ -51,7 +51,11 @@ const About = () => {
           discomfort. Our mission is to empower you to take every step
           comfortably and stylishly, with footwear that’s as unique as you are.
         </p>
-        <Link to="/contact" role="button" className="w-2/3 mt-5 btn btn-gradient">
+        <Link
+          to="/contact"
+          role="button"
+          className="w-2/3 mt-5 btn btn-gradient-blue"
+        >
           Contact us
         </Link>
       </div>
