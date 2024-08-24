@@ -50,7 +50,7 @@ export default function Register() {
           Get Your Perfect Fit!
         </p>
       </div>
-      <div className="relative w-4/5 p-10 m-auto border rounded-2xl md:w-2/5 bg-neutral">
+      <div className="w-4/5 p-10 m-auto border rounded-2xl md:w-2/5 bg-neutral">
         <form className="flex flex-col gap-3 " onSubmit={handleSubmit}>
           <h1 className="text-2xl font-bold">Signup</h1>
           <p>Just some details to get you in.!</p>
