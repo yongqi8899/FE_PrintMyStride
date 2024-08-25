@@ -20,8 +20,9 @@ export default function RootLayout() {
           <div className="block md:hidden">
             <NavMobil />
           </div>
-
-          <Outlet context={products} />
+          <div className="w-full my-20 m-w-md">
+            <Outlet context={products} />
+          </div>
           <Footer />
         </CartProvider>
       </AuthContextProvider>

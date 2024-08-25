@@ -7,7 +7,7 @@ const Home = () => {
     <div className="grid gap-4 mx-auto justify-items-center md:grid-cols-3">
       {products &&
         products.map((product) => (
-          <div key={product._id} className="last:mb-10 first:mt-20 md:mt-20 md:mb-10 " >
+          <div key={product._id} className="mt-3" >
             <Link to={`/products/${product._id}`} className="block">
               <ProductsCard src={product.image} title={product.title}>
                 <div className="flex flex-col m-auto text-center">

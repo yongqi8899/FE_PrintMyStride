@@ -1,6 +1,6 @@
 import Hamburger from "hamburger-react";
 import { HashLink as NavLink } from 'react-router-hash-link';
-import {  useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { useAuth } from "@/context/index.js";
 
@@ -15,13 +15,16 @@ export default function NavMobil() {
     const localTheme = localStorage.getItem("theme");
     document.querySelector("html").setAttribute("data-theme", localTheme);
   }, [theme]);
+  
   const handleToggle = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+
   const detailsRef = useRef(null);
   const closeDetails = () => {
     detailsRef.current.removeAttribute("open");
   };
+
   return (
     <header className="fixed top-0 z-50 flex gap-8 text-xl navbar bold font-redressed bg-neutral">
       <div className="flex-1">
@@ -95,7 +98,9 @@ export default function NavMobil() {
                 to="/"
                 onClick={() => setOpen(false)}
                 role="button"
-                className="text-xl"
+                className={({ isActive }) =>
+                  isActive ? "text-blue-500" : "text-xl"
+                }
               >
                 Home
               </NavLink>
@@ -106,7 +111,9 @@ export default function NavMobil() {
                 to="/about"
                 onClick={() => setOpen(false)}
                 role="button"
-                className="text-xl"
+                className={({ isActive }) =>
+                  isActive ? "text-blue-500" : "text-xl"
+                }
               >
                 About
               </NavLink>
@@ -117,7 +124,9 @@ export default function NavMobil() {
                 to="/contact"
                 onClick={() => setOpen(false)}
                 role="button"
-                className="text-xl"
+                className={({ isActive }) =>
+                  isActive ? "text-blue-500" : "text-xl"
+                }
               >
                 Contact
               </NavLink>
@@ -128,7 +137,9 @@ export default function NavMobil() {
                 to="/cart"
                 onClick={() => setOpen(false)}
                 role="button"
-                className="text-xl"
+                className={({ isActive }) =>
+                  isActive ? "text-blue-500" : "text-xl"
+                }
               >
                 Cart
               </NavLink>
