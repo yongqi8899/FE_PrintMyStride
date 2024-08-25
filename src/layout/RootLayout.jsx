@@ -20,7 +20,7 @@ export default function RootLayout() {
           <div className="block md:hidden">
             <NavMobil />
           </div>
-          <div className="w-full my-20 m-w-md">
+          <div className="w-full my-20">
             <Outlet context={products} />
           </div>
           <Footer />
