@@ -1,6 +1,6 @@
 const Img = ({ src, title, children }) => {
   return (
-      <figure className="overflow-hidden">
+      <figure className="overflow-hidden bg-secondary">
         <img
           src={src}
           alt={title}
