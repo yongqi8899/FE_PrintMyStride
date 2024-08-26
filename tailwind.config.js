@@ -33,7 +33,7 @@ export default {
         light: {
           ...themes.light,
           primary: "#040F75",
-          secondary: "#F49C80",
+          secondary: "#0BBAB5",
           neutral: "#E6F0ED",
           "base-content": "#016D48",
         },
