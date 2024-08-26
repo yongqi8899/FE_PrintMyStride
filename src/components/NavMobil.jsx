@@ -100,7 +100,7 @@ export default function NavMobil() {
                   isActive ? "text-secondary text-2xl" : "text-xl"
                 }
               >
-                Home
+                Products
               </NavLink>
             </li>
             <li>

@@ -38,7 +38,7 @@ export default function Header() {
                 `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
               }
             >
-              Home
+              Products
             </NavLink>
           </li>
           <li>
