@@ -16,7 +16,7 @@ const CartTable = ({ cart, setCart }) => {
   }, [setCart]);
   const paymentProcess = () => {
     navigate("/pay");
-  }
+  };
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -24,31 +24,22 @@ const CartTable = ({ cart, setCart }) => {
           <tr>
             <th>Product</th>
             <th>Product Name</th>
-            <th>Price</th>
             <th>Amount</th>
-            <th>Line total</th>
+            <th>Price</th>
           </tr>
         </thead>
         <tbody>
           {cart.map((item) => (
             <tr key={item._id}>
               <td>
-                <div className="flex items-center gap-3">
-                  <div className="avatar">
-                    <div className="rounded-full h-28 w-28">
-                      <Img src={item.image} alt={item.title} />
-                    </div>
+                <div className="h-28 w-28">
+                  <div className="w-full h-full overflow-hidden rounded-full">
+                    <Img src={item.image} alt={item.title} />
                   </div>
                 </div>
-              </td> 
+              </td>
               <td>{item.title}</td>
               <td>
-                <div className="text-sm opacity-50">
-                  {formatCurrency(item.price)}
-                </div>
-              </td>
-              <td
-              >
                 <button
                   className="w-5 mx-2 btn btn-secondary"
                   onClick={() => setCart((prev) => removeFromCart(prev, item))}
@@ -63,9 +54,28 @@ const CartTable = ({ cart, setCart }) => {
                   +
                 </button>
               </td>
-              <td width="10%">{formatCurrency(item.quantity * item.price)}</td>
+              <td>
+                <div className="text-sm opacity-50">
+                  {formatCurrency(item.price)}
+                </div>
+              </td>
             </tr>
           ))}
+          <tr>
+            <td></td>
+            <td></td>
+            <td className="text-xl"> Total: </td>
+            <td>
+              <h3 className="text-xl text-secondary">
+                {formatCurrency(
+                  cart.reduce(
+                    (acc, item) => acc + item.quantity * item.price,
+                    0
+                  )
+                )}
+              </h3>
+            </td>
+          </tr>
         </tbody>
         <tfoot>
           <tr>
@@ -79,15 +89,13 @@ const CartTable = ({ cart, setCart }) => {
                 Reset cart
               </button>
             </th>
+
             <th>
-              <button className="btn btn-gradient-blue" onClick={paymentProcess}>
-                Pay:{" "}
-                {formatCurrency(
-                  cart.reduce(
-                    (acc, item) => acc + item.quantity * item.price,
-                    0
-                  )
-                )}
+              <button
+                className="btn btn-gradient-blue"
+                onClick={paymentProcess}
+              >
+                Pay
               </button>
             </th>
           </tr>
