@@ -25,7 +25,7 @@ const CartTable = ({ cart, setCart }) => {
         </thead>
         <tbody>
           {cart.map((item) => (
-            <tr key={item.id}>
+            <tr key={item._id}>
               <td>
                 <div className="flex items-center gap-3">
                   <div className="avatar">

@@ -5,10 +5,10 @@ export const formatCurrency = amount =>
   }).format(amount);
 
 export const addToCart = (cart, item) => {
-  const existing = cart.find(p => p.id === item.id);
+  const existing = cart.find(p => p._id === item._id);
   let newCart = [];
   if (existing) {
-    newCart = cart.map(p => (p.id === item.id ? { ...p, quantity: p.quantity + 1 } : p));
+    newCart = cart.map(p => (p._id === item._id ? { ...p, quantity: p.quantity + 1 } : p));
   } else {
     newCart = [...cart, { ...item, quantity: 1 }];
   }
@@ -17,12 +17,12 @@ export const addToCart = (cart, item) => {
 };
 
 export const removeFromCart = (cart, item) => {
-  const existing = cart.find(p => p.id === item.id);
+  const existing = cart.find(p => p._id === item._id);
   let newCart = [];
   if (existing.quantity === 1) {
-    newCart = cart.filter(p => p.id !== item.id);
+    newCart = cart.filter(p => p._id !== item._id);
   } else {
-    newCart = cart.map(p => (p.id === item.id ? { ...p, quantity: p.quantity - 1 } : p));
+    newCart = cart.map(p => (p._id === item._id ? { ...p, quantity: p.quantity - 1 } : p));
   }
   localStorage.setItem('cart', JSON.stringify(newCart));
   return newCart;

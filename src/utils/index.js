@@ -1,4 +1,4 @@
-import { toast } from 'react-toastify'; // Assuming you're using react-toastify
+import { toast } from 'react-toastify';
 import { useEffect } from "react";
 
 export const useToaster = () => {

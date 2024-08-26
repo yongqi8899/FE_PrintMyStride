@@ -9,7 +9,7 @@ const Detail = () => {
   const productInCart = cart.find((p) => p?._id === product._id);
 
   return (
-    <div className="flex-wrap items-center m-10 my-10 md:my-20 card card-side w-90vw">
+    <div className="flex-wrap items-center m-10 my-10 md:my-20 card card-side w-90vw"  >
       <div className="md:w-1/2">
         <Img src={product.image} title={product.title} />
       </div>
