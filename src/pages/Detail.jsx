@@ -18,7 +18,7 @@ const Detail = () => {
         <h2 className="text-3xl truncate">{product.title}</h2>
         <p className="text-xl text-secondary">{formatCurrency(product.price)} </p>
         <p>{product.summary}</p>
-        <div className="items-center justify-end card-actions">
+        <div className="items-center justify-start card-actions">
           {productInCart ? (
             <>
               <button
