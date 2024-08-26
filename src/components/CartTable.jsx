@@ -19,7 +19,7 @@ const CartTable = ({ cart, setCart }) => {
   };
   return (
     <div className="overflow-x-auto">
-      <table className="table">
+      <table className="table text-center">
         <thead>
           <tr>
             <th>Product</th>
@@ -32,7 +32,7 @@ const CartTable = ({ cart, setCart }) => {
           {cart.map((item) => (
             <tr key={item._id}>
               <td>
-                <div className="h-28 w-28">
+                <div className="mx-auto h-28 w-28">
                   <div className="w-full h-full overflow-hidden rounded-full">
                     <Img src={item.image} alt={item.title} />
                   </div>
@@ -92,7 +92,7 @@ const CartTable = ({ cart, setCart }) => {
 
             <th>
               <button
-                className="btn btn-gradient-blue"
+                className="w-20 btn btn-gradient-blue"
                 onClick={paymentProcess}
               >
                 Pay
