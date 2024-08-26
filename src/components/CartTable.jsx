@@ -15,7 +15,7 @@ const CartTable = ({ cart, setCart }) => {
     setCart(storedCart);
   }, [setCart]);
   const paymentProcess = () => {
-    navigate("/pay");
+    navigate("/status");
   };
   return (
     <div className="overflow-x-auto">
