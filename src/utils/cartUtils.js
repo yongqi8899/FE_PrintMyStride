@@ -1,7 +1,7 @@
 export const formatCurrency = amount =>
-  new Intl.NumberFormat('de-DE', {
+  new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'EUR'
+    currency: 'USD'
   }).format(amount);
 
 export const addToCart = (cart, item) => {

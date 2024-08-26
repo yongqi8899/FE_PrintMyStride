@@ -22,14 +22,14 @@ const Detail = () => {
           {productInCart ? (
             <>
               <button
-                className="btn btn-primary"
+                className="btn btn-gost"
                 onClick={() => setCart((prev) => removeFromCart(prev, product))}
               >
                 -
               </button>
               <span> {productInCart.quantity}</span>
               <button
-                className="btn btn-primary"
+                className="btn btn-gost"
                 onClick={() => setCart((prev) => addToCart(prev, product))}
               >
                 +

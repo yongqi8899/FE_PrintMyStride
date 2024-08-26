@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
 import {
   addToCart,
   formatCurrency,
   removeFromCart,
   resetCart,
 } from "@/utils/cartUtils";
+import Img from "@/components/Img";
 
 const CartTable = ({ cart, setCart }) => {
   const paymentProcess = () => {
@@ -17,7 +17,8 @@ const CartTable = ({ cart, setCart }) => {
         <thead>
           <tr>
             <th>Product</th>
-            <th>Description</th>
+            <th>Product Name</th>
+            <th>Price</th>
             <th>Amount</th>
             <th>Line total</th>
           </tr>
@@ -25,48 +26,32 @@ const CartTable = ({ cart, setCart }) => {
         <tbody>
           {cart.map((item) => (
             <tr key={item.id}>
-              <td width="30%">
+              <td>
                 <div className="flex items-center gap-3">
                   <div className="avatar">
-                    <div className="h-28 w-28 rounded-full">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className=" !object-contain"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">{item.title} </div>
-                    <div className="text-sm opacity-50">
-                      Unit price: {formatCurrency(item.price)}
+                    <div className="rounded-full h-28 w-28">
+                      <Img src={item.image} alt={item.title} />
                     </div>
                   </div>
                 </div>
-              </td>
-              <td width="50%">
-                {item.description}
-                <br />
-                <Link
-                  to={`/category/${item.category}`}
-                  className="badge badge-ghost badge-sm"
-                >
-                  {item.category}
-                </Link>
+              </td> 
+              <td>{item.title}</td>
+              <td>
+                <div className="text-sm opacity-50">
+                  {formatCurrency(item.price)}
+                </div>
               </td>
               <td
-                width="10%"
-                className="flex items-center justify-around w-full"
               >
                 <button
-                  className="btn btn-primary"
+                  className="w-5 mx-2 btn btn-secondary"
                   onClick={() => setCart((prev) => removeFromCart(prev, item))}
                 >
                   -
                 </button>
-                <span> {item.quantity}</span>
+                <span className="text-center"> {item.quantity}</span>
                 <button
-                  className="btn btn-primary"
+                  className="w-5 mx-2 btn btn-secondary"
                   onClick={() => setCart((prev) => addToCart(prev, item))}
                 >
                   +
@@ -82,14 +67,14 @@ const CartTable = ({ cart, setCart }) => {
             <th></th>
             <th>
               <button
-                className="btn btn-secondary"
+                className="btn btn-gradient-blue"
                 onClick={() => setCart(resetCart())}
               >
                 Reset cart
               </button>
             </th>
             <th>
-              <button className="btn btn-success" onClick={paymentProcess}>
+              <button className="btn btn-gradient-blue" onClick={paymentProcess}>
                 Checkout:{" "}
                 {formatCurrency(
                   cart.reduce(

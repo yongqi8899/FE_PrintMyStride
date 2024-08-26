@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 .btn-gradient-blue {
-  @apply bg-gradient-blue hover:bg-gradient-lisa text-white rounded-3xl text-center py-1;
+  @apply bg-gradient-blue hover:bg-gradient-lisa text-white rounded-xl text-center py-1;
 }
 
 .btn-gradient-green {
