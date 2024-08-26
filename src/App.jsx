@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
-import { getAllProducts } from "@/data/products/loaders.js";
+import { getAllProducts, getOneProduct } from "@/data/products/loaders.js";
 
 import { RootLayout, ProtectLayout } from "@/layout";
 import Loading from "@/components/Loading.jsx";
@@ -39,6 +39,9 @@ export default function App() {
               <Detail />
             </Suspense>
           ),
+          loader: ({ params }) => {
+           return getOneProduct(params.id);
+          },
         },
         {
           path: "/login",

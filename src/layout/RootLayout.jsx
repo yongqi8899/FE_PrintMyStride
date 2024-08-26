@@ -5,10 +5,9 @@ import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import { AuthContextProvider, CartProvider } from "@/context";
-import { useLoaderData } from "react-router-dom";
 
 export default function RootLayout() {
-  const products = useLoaderData();
+  
   return (
     <div>
       <ToastContainer position="top-right" autoClose={1500} theme="light" />
@@ -21,7 +20,7 @@ export default function RootLayout() {
             <NavMobil />
           </div>
           <div className="w-full !mt-24">
-            <Outlet context={products} />
+            <Outlet />
           </div>
           <Footer />
         </CartProvider>

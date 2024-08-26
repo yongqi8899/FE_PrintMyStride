@@ -12,5 +12,11 @@ const useAuth = () => {
     return context
 }   
 
-
-export {AuthContext, AuthContextProvider, useAuth, CartProvider, CartContext}
+const useCart = () => {
+    const context =  useContext(CartContext)
+    if(!context){
+        throw new Error('useCart must be used within an AuthProvider')
+    }
+    return context
+}  
+export {AuthContext, AuthContextProvider, useAuth, CartProvider, CartContext, useCart}
