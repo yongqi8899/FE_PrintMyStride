@@ -5,12 +5,18 @@ import {
   resetCart,
 } from "@/utils/cartUtils";
 import Img from "@/components/Img";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const CartTable = ({ cart, setCart }) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(storedCart);
+  }, [setCart]);
   const paymentProcess = () => {
-    alert("Payment process is not implemented yet. But coming soon!");
-  };
-
+    navigate("/pay");
+  }
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -75,7 +81,7 @@ const CartTable = ({ cart, setCart }) => {
             </th>
             <th>
               <button className="btn btn-gradient-blue" onClick={paymentProcess}>
-                Checkout:{" "}
+                Pay:{" "}
                 {formatCurrency(
                   cart.reduce(
                     (acc, item) => acc + item.quantity * item.price,

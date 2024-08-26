@@ -15,6 +15,7 @@ const Home = lazy(()=>import("@/pages/Home.jsx"))
 const Login = lazy(()=>import("@/pages/Login.jsx"))
 const Me = lazy(()=>import("@/pages/Me.jsx"))
 const Register = lazy(()=>import("@/pages/Register.jsx"))
+const Pay = lazy(()=>import("@/pages/Pay.jsx"))
 
 
 export default function App() {
@@ -91,7 +92,15 @@ export default function App() {
               <Me />
             </Suspense>
           ),
-        }
+        },
+        {
+          path: "/pay",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Pay />
+            </Suspense>
+          ),
+        },
       ],
       errorElement: (
         <Suspense fallback={<Loading />}>

@@ -1,14 +1,18 @@
-import { useContext } from 'react';
-import { CartContext } from '@/context';
-import { Alert, CartTable } from '@/components';
+import { Alert, CartTable } from "@/components";
+import { useCart } from "@/context";
+import { useEffect } from "react";
 
 const Cart = () => {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, setCart } = useCart();
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(storedCart);
+  }, [setCart]);
 
   if (!cart.length)
     return (
-      <div className='mt-5'>
-        <Alert message='Your cart is empty :(' />
+      <div className="mt-5">
+        <Alert message="Your cart is empty :(" />
       </div>
     );
 
