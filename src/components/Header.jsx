@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { useAuth } from "@/context/index.js";
-import { HashLink as NavLink } from 'react-router-hash-link';
 
 export default function Header() {
   const { isAuthenticated, logout } = useAuth();
@@ -34,7 +34,9 @@ export default function Header() {
             <NavLink
               to="/"
               role="button"
-              className="text-xl btn btn-ghost"
+              className={({ isActive }) =>
+                `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
+              }
             >
               Home
             </NavLink>
@@ -44,7 +46,9 @@ export default function Header() {
             <NavLink
               to="/about"
               role="button"
-              className="text-xl btn btn-ghost"
+              className={({ isActive }) =>
+                `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
+              }
             >
               About
             </NavLink>
@@ -54,7 +58,9 @@ export default function Header() {
             <NavLink
               to="/contact"
               role="button"
-              className="text-xl btn btn-ghost"
+              className={({ isActive }) =>
+                `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
+              }
             >
               Contact
             </NavLink>
@@ -64,37 +70,57 @@ export default function Header() {
             <NavLink
               to="/cart"
               role="button"
-              className="text-xl btn btn-ghost"
+              className={({ isActive }) =>
+                `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
+              }
             >
               Cart
             </NavLink>
           </li>
           <li>
-          {isAuthenticated ? (
-            <details ref={detailsRef} className="flex items-center ">
-              <summary className="flex items-center">
-                <div className="avatar">
-                  <div className="w-10 rounded-full">
-                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            {isAuthenticated ? (
+              <details ref={detailsRef} className="flex items-center ">
+                <summary className="flex items-center">
+                  <div className="avatar">
+                    <div className="w-10 rounded-full">
+                      <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                    </div>
                   </div>
-                </div>
-              </summary>
-              <NavLink to="/me" onClick={closeDetails}>
-                <p> Me</p>
-              </NavLink>
-              <NavLink onClick={logout}>Logout</NavLink>
-            </details>
-          ) : (
-            <details ref={detailsRef} className="flex items-center ">
-              <summary>Login</summary>
-              <NavLink to="/login" onClick={closeDetails}>
-                Login
-              </NavLink>
-              <NavLink to="/register" onClick={closeDetails}>
-                Register
-              </NavLink>
-            </details>
-          )}
+                </summary>
+                <NavLink
+                  to="/me"
+                  onClick={closeDetails}
+                  className={({ isActive }) =>
+                    `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
+                  }
+                >
+                  <p> Me</p>
+                </NavLink>
+                <NavLink onClick={logout}>Logout</NavLink>
+              </details>
+            ) : (
+              <details ref={detailsRef} className="flex items-center ">
+                <summary>Login</summary>
+                <NavLink
+                  to="/login"
+                  onClick={closeDetails}
+                  className={({ isActive }) =>
+                    `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
+                  }
+                >
+                  Login
+                </NavLink>
+                <NavLink
+                  to="/register"
+                  onClick={closeDetails}
+                  className={({ isActive }) =>
+                    `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
+                  }
+                >
+                  Register
+                </NavLink>
+              </details>
+            )}
           </li>
           <li>
             <label className="swap swap-rotate">
@@ -112,7 +138,7 @@ export default function Header() {
               >
                 <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
               </svg>
-              
+
               <svg
                 className="w-10 h-10 fill-current swap-off"
                 xmlns="http://www.w3.org/2000/svg"

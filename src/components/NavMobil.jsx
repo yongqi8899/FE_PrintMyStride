@@ -1,6 +1,5 @@
 import Hamburger from "hamburger-react";
-import { HashLink as NavLink } from 'react-router-hash-link';
-import { useLocation } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { useAuth } from "@/context/index.js";
 
@@ -33,7 +32,6 @@ export default function NavMobil() {
         </NavLink>
       </div>
       <label className="swap swap-rotate">
-        {/* this hidden checkbox controls the state */}
         <input
           type="checkbox"
           className="theme-controller"
@@ -99,7 +97,7 @@ export default function NavMobil() {
                 onClick={() => setOpen(false)}
                 role="button"
                 className={({ isActive }) =>
-                  isActive ? "text-blue-500" : "text-xl"
+                  isActive ? "text-secondary text-2xl" : "text-xl"
                 }
               >
                 Home
@@ -112,7 +110,7 @@ export default function NavMobil() {
                 onClick={() => setOpen(false)}
                 role="button"
                 className={({ isActive }) =>
-                  isActive ? "text-blue-500" : "text-xl"
+                  isActive ? "text-secondary" : "text-xl"
                 }
               >
                 About
@@ -125,7 +123,7 @@ export default function NavMobil() {
                 onClick={() => setOpen(false)}
                 role="button"
                 className={({ isActive }) =>
-                  isActive ? "text-blue-500" : "text-xl"
+                  isActive ? "text-secondary" : "text-xl"
                 }
               >
                 Contact
@@ -138,7 +136,7 @@ export default function NavMobil() {
                 onClick={() => setOpen(false)}
                 role="button"
                 className={({ isActive }) =>
-                  isActive ? "text-blue-500" : "text-xl"
+                  isActive ? "text-secondary" : "text-xl"
                 }
               >
                 Cart
