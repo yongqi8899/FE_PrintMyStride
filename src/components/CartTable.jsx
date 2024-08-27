@@ -6,17 +6,18 @@ import {
 } from "@/utils/cartUtils";
 import Img from "@/components/Img";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useLoaderData } from "react";
+import {createOrder} from "@/data/orders/actions.js";
+import {useAuth} from "@/context";
 
 const CartTable = ({ cart, setCart }) => {
   const navigate = useNavigate();
+  const {user} = useAuth();
+  const userId = user._id;
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(storedCart);
   }, [setCart]);
-  const paymentProcess = () => {
-    navigate("/status");
-  };
   return (
     <div className="overflow-x-auto">
       <table className="table text-center">
@@ -93,7 +94,7 @@ const CartTable = ({ cart, setCart }) => {
             <th>
               <button
                 className="w-20 btn btn-gradient-blue"
-                onClick={paymentProcess}
+                onClick={() =>createOrder(userId, cart)}
               >
                 Pay
               </button>

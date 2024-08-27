@@ -3,6 +3,8 @@ import { lazy, Suspense } from "react";
 
 import { getAllProducts, getOneProduct } from "@/data/products/loaders.js";
 
+import { createOrder, deleteOrder } from "@/data/orders/actions.js";
+
 import { RootLayout, ProtectLayout } from "@/layout";
 import Loading from "@/components/Loading.jsx";
 
@@ -15,7 +17,7 @@ const Home = lazy(()=>import("@/pages/Home.jsx"))
 const Login = lazy(()=>import("@/pages/Login.jsx"))
 const Me = lazy(()=>import("@/pages/Me.jsx"))
 const Register = lazy(()=>import("@/pages/Register.jsx"))
-const Pay = lazy(()=>import("@/pages/Pay.jsx"))
+const Status = lazy(()=>import("@/pages/Status.jsx"))
 
 
 export default function App() {
@@ -83,7 +85,6 @@ export default function App() {
               <Cart />
             </Suspense>
           ),
-          loader: getAllProducts,
         },
         {
           path: "/me",
@@ -94,10 +95,10 @@ export default function App() {
           ),
         },
         {
-          path: "/pay",
+          path: "/status",
           element: (
             <Suspense fallback={<Loading />}>
-              <Pay />
+              <Status />
             </Suspense>
           ),
         },

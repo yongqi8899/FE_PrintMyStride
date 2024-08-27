@@ -1,33 +1,36 @@
 import { redirect } from "react-router-dom";
-import { showToast } from "@/utils/index";
+import { toast } from 'react-toastify';
 
-export const createOrder = async ({ request }) => {
-  const formData = Object.fromEntries(await request.formData());
+export const createOrder = async (userId, cart) => {
+  const formData = {
+    status: "payed",
+    userId:  userId,
+    products: cart.map(item => ({
+      productId: item._id,
+      quantity: item.quantity,
+    }))
+  };
+  console.log(formData);
   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/orders`, {
     method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
     credentials: "include",
+    headers: {
+      'Content-Type': 'application/json',  
+    },
     body: JSON.stringify(formData),
   });
-  showToast(res, "create failed!", "create success!");
-  return redirect("/orders");
-};
 
-export const updateOrder = async ({ params, request }) => {
-  const id = params.id;
-  const formData = Object.fromEntries(await request.formData());
-  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/orders/${id}`, {
-    method: "PUT",
-    headers: {
-      "content-type": "application/json",
-    },
-    credentials: "include",
-    body: JSON.stringify(formData),
-  });
-  showToast(res, "update failed!", "update success!");
-  return redirect(`/orders/${id}`);
+  if (!res.ok) {
+    const errorData = await res.json();
+    if (!errorData.error) {
+      throw new Error("An Error occured while paying");
+    }
+    throw new Error(errorData.error);
+    toast.error("An Error occured while paying");
+  }
+  const data = await res.json();
+  toast("Pay created successfully");
+  return data;
 };
 
 export const deleteOrder = async ({ params }) => {
