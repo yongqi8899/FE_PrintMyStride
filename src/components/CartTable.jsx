@@ -94,7 +94,7 @@ const CartTable = ({ cart, setCart }) => {
             <th>
               <button
                 className="w-20 btn btn-gradient-blue"
-                onClick={() =>createOrder(userId, cart)}
+                onClick={() =>createOrder(userId, cart, navigate)}
               >
                 Pay
               </button>

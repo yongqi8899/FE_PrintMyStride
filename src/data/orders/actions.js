@@ -1,7 +1,6 @@
-import { redirect } from "react-router-dom";
 import { toast } from 'react-toastify';
 
-export const createOrder = async (userId, cart) => {
+export const createOrder = async (userId, cart, navigate) => {
   const formData = {
     status: "payed",
     userId:  userId,
@@ -30,6 +29,8 @@ export const createOrder = async (userId, cart) => {
   }
   const data = await res.json();
   toast("Pay created successfully");
+  localStorage.removeItem("cart");
+  navigate("/status")
   return data;
 };
 
