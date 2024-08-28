@@ -9,7 +9,6 @@ export const createOrder = async (userId, cart, navigate) => {
       quantity: item.quantity,
     }))
   };
-  console.log(formData);
   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/orders`, {
     method: "POST",
     credentials: "include",

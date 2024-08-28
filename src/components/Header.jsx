@@ -79,7 +79,7 @@ export default function Header() {
           </li>
           <li>
             {isAuthenticated ? (
-              <details ref={detailsRef} className="flex items-center ">
+              <details ref={detailsRef} className="flex items-center relative group">
                 <summary className="flex items-center">
                   <div className="avatar">
                     <div className="w-10 rounded-full">
@@ -87,6 +87,8 @@ export default function Header() {
                     </div>
                   </div>
                 </summary>
+                <div className="absolute top-full left-0 bg-neutral p-2 z-50 hidden group-open:block">
+       
                 <NavLink
                   to="/me"
                   onClick={closeDetails}
@@ -97,10 +99,12 @@ export default function Header() {
                   <p> Me</p>
                 </NavLink>
                 <NavLink onClick={logout}>Logout</NavLink>
+                </div>
               </details>
             ) : (
-              <details ref={detailsRef} className="flex items-center ">
+              <details ref={detailsRef} className="flex items-center relative group">
                 <summary>Login</summary>
+                <div className="absolute top-full left-0 bg-neutral p-2 z-50 hidden group-open:block">
                 <NavLink
                   to="/login"
                   onClick={closeDetails}
@@ -119,12 +123,12 @@ export default function Header() {
                 >
                   Register
                 </NavLink>
+                </div>
               </details>
             )}
           </li>
           <li>
             <label className="swap swap-rotate">
-              {/* this hidden checkbox controls the state */}
               <input
                 type="checkbox"
                 className="theme-controller"
