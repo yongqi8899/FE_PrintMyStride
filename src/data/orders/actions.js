@@ -25,7 +25,6 @@ export const createOrder = async (userId, cart, navigate) => {
       throw new Error("An Error occured while paying");
     }
     throw new Error(errorData.error);
-    toast.error("An Error occured while paying");
   }
   const data = await res.json();
   toast("Pay created successfully");

@@ -1,10 +1,11 @@
 import { addToCart, formatCurrency, removeFromCart } from "@/utils/cartUtils";
 import { useCart } from "@/context";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Img from "@/components/Img";
 import { useEffect } from "react";
 
 const Detail = () => {
+  const navigate = useNavigate();
   const { cart, setCart } = useCart();
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -13,6 +14,14 @@ const Detail = () => {
 
   const product = useLoaderData();
   const productInCart = cart.find((p) => p?._id === product._id);
+  const goToCart = (e) => {
+    e.preventDefault();
+    return navigate("/cart");
+  };
+  const goToShopping = (e) => {
+    e.preventDefault();
+    return navigate("/");
+  };
 
   return (
     <div className="flex-wrap items-center m-10 my-10 md:my-20 card card-side w-90vw">
@@ -51,6 +60,12 @@ const Detail = () => {
               Add to cart
             </button>
           )}
+          <button className="btn btn-gradient-blue" onClick={goToCart}>
+            Go to Cart
+          </button>
+          <button className="btn btn-gradient-blue" onClick={goToShopping}>
+            Continue Shopping
+          </button>
         </div>
         <div className="my-10 ">
           <h3 className="text-2xl font-redressed text-secondary">

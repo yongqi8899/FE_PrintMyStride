@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 export const formatCurrency = amount =>
   new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -13,6 +14,7 @@ export const addToCart = (cart, item) => {
     newCart = [...cart, { ...item, quantity: 1 }];
   }
   localStorage.setItem('cart', JSON.stringify(newCart));
+  toast('Shoe added to cart');
   return newCart;
 };
 
@@ -25,6 +27,7 @@ export const removeFromCart = (cart, item) => {
     newCart = cart.map(p => (p._id === item._id ? { ...p, quantity: p.quantity - 1 } : p));
   }
   localStorage.setItem('cart', JSON.stringify(newCart));
+  toast('Shoe removed from cart');
   return newCart;
 };
 
