@@ -1,4 +1,4 @@
-import img from "@/assets/img/shoe1.png";
+import img from "@/assets/img/shoe.png";
 import { Link } from "react-router-dom";
 const About = () => {
   return (
@@ -12,7 +12,7 @@ const About = () => {
             <div class="transform rotate-45 border-t-2 border-r-2 border-base-content w-3 h-3 z-1"></div>
           </div>
         </div>
-        <div>
+        <div className="mt-6">
           <img src={img} alt="a image about shoe" />
         </div>
       </div>
