@@ -7,9 +7,9 @@ const Cart = () => {
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(storedCart);
-  }, [setCart]);
+  }, [setCart, cart]);
 
-  if (!cart.length)
+  if (!cart.length>0)
     return (
       <div className="mt-5">
         <Alert message="Your cart is empty :(" />
