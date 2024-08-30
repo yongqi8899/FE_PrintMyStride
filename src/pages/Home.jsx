@@ -6,7 +6,7 @@ const Home = () => {
   const { products } = useCart();
 
   return (
-    <div className="grid gap-4 mx-auto justify-items-center md:grid-cols-3 lg:grid-cols-5">
+    <div className="grid gap-4 mx-auto justify-items-center md:grid-cols-3">
       {products &&
         products.map((product) => (
           <div key={product._id}>

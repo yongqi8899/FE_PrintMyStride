@@ -11,6 +11,8 @@ import { MdEmail } from "react-icons/md";
 import { FaKey } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 
+import { account } from "@/utils/appwrite.js";
+
 export default function Register() {
   const { isAuthenticated, setCheckSession, setIsAuthenticated } = useAuth();
   const [{ userName, email, password, confirmPassword }, setForm] = useState({
@@ -45,6 +47,14 @@ export default function Register() {
       setIsAuthenticated(true);
     }
   };
+
+  async function logWithGoogle() {
+    await account.createOAuth2Session(
+      "google",
+      "http://localhost:5173/",
+      "http://localhost:5173/fail"
+    );
+  }
   if (isAuthenticated) {
     return <Navigate to={location.state?.next || "/"} />;
   }
@@ -115,7 +125,9 @@ export default function Register() {
           </div>
           <div className="flex justify-center gap-2">
             <FaFacebook color="#1877f2" fontSize="1.5em" />
-            <FcGoogle fontSize="1.5em" />
+            <div onClick={logWithGoogle}>
+              <FcGoogle fontSize="1.5em" />
+            </div>
             <FaGithub fontSize="1.5em" />
           </div>
           <small>
