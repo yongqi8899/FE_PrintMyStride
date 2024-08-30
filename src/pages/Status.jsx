@@ -4,8 +4,12 @@ import { formatCurrency } from "@/utils/cartUtils";
 export default function Status() {
   return (
     <div className="flex flex-col items-center gap-10 mt-20">
-      <div className="max-w-md text-xl">Your payment was successful. You will receive the foot impression kit in 2 days. Please make a print of your feet and send it back to us. Your custom shoes will be on their way to you soon.</div>
-      
+      <div className="max-w-md text-xl text-secondary">
+        Your payment was successful. You will receive the foot impression kit in
+        2 days. Please make a print of your feet and send it back to us. Your
+        custom shoes will be on their way to you soon.
+      </div>
+
       <ul className="timeline">
         <li>
           <div className="timeline-start timeline-box">Designed Shoes</div>
@@ -13,7 +17,7 @@ export default function Status() {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
-              fill="currentColor"
+              fill="green"
               className="w-5 h-5"
             >
               <path
@@ -23,15 +27,15 @@ export default function Status() {
               />
             </svg>
           </div>
-          <hr />
+          <hr className="bg-green-700" />
         </li>
         <li>
-          <hr />
+          <hr className="bg-green-700" />
           <div className="timeline-middle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
-              fill="currentColor"
+              fill="green"
               className="w-5 h-5"
             >
               <path
@@ -42,10 +46,10 @@ export default function Status() {
             </svg>
           </div>
           <div className="timeline-end timeline-box">paid</div>
-          <hr />
+          <hr className="bg-green-700" />
         </li>
         <li>
-          <hr />
+        <hr className="bg-green-700" />
           <div className="timeline-start timeline-box">Foot impression</div>
           <div className="timeline-middle">
             <svg
@@ -66,7 +70,7 @@ export default function Status() {
         <li>
           <hr />
           <div className="timeline-middle">
-          <svg
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
@@ -86,7 +90,7 @@ export default function Status() {
           <hr />
           <div className="timeline-start timeline-box">Enjoy your schoes</div>
           <div className="timeline-middle">
-          <svg
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
