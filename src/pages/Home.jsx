@@ -1,18 +1,19 @@
 import { Link } from "react-router-dom";
 import ProductsCard from "@/components/ProductsCard";
+import { formatCurrency } from "@/utils/cartUtils";
 import { useCart } from "@/context";
 const Home = () => {
   const { products } = useCart();
 
   return (
-    <div className="grid gap-4 mx-auto justify-items-center md:grid-cols-3">
+    <div className="grid gap-4 mx-auto justify-items-center md:grid-cols-3 lg:grid-cols-5">
       {products &&
         products.map((product) => (
           <div key={product._id}>
             <Link to={`/products/${product._id}`} className="block">
               <ProductsCard src={product.image} title={product.title}>
                 <div className="flex flex-col m-auto text-center">
-                  <p className="text-2xl font-redressed">$ {product.price}</p>
+                  <p className="text-2xl font-redressed">{formatCurrency(product.price)}</p>
                   <p className="text-2xl text-secondary font-redressed">
                     {product.title}
                   </p>
