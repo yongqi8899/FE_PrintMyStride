@@ -1,12 +1,7 @@
-import { Navigate, Link, useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
-import { me } from "@/data/auth/index.js";
 import { useAuth } from "@/context/index.js";
 
 export default function Me() {
   const { user } = useAuth();
-  console.log(user);
   return (
     user&&(<div className="card card-side bg-neutral shadow-xl max-w-xl m-auto">
       <figure>

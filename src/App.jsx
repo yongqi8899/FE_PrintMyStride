@@ -8,17 +8,16 @@ import { createOrder, deleteOrder } from "@/data/orders/actions.js";
 import { RootLayout, ProtectLayout } from "@/layout";
 import Loading from "@/components/Loading.jsx";
 
-const About = lazy(()=>import("@/pages/About.jsx"))
-const Cart = lazy(()=>import("@/pages/Cart.jsx"))
-const Contact = lazy(()=>import("@/pages/Contact.jsx"))
-const Detail = lazy(()=>import("@/pages/Detail.jsx"))
-const ErrorPage = lazy(()=>import("@/pages/ErrorPage.jsx"))
-const Home = lazy(()=>import("@/pages/Home.jsx"))
-const Login = lazy(()=>import("@/pages/Login.jsx"))
-const Me = lazy(()=>import("@/pages/Me.jsx"))
-const Register = lazy(()=>import("@/pages/Register.jsx"))
-const Status = lazy(()=>import("@/pages/Status.jsx"))
-
+const About = lazy(() => import("@/pages/About.jsx"));
+const Cart = lazy(() => import("@/pages/Cart.jsx"));
+const Contact = lazy(() => import("@/pages/Contact.jsx"));
+const Detail = lazy(() => import("@/pages/Detail.jsx"));
+const ErrorPage = lazy(() => import("@/pages/ErrorPage.jsx"));
+const Home = lazy(() => import("@/pages/Home.jsx"));
+const Login = lazy(() => import("@/pages/Login.jsx"));
+const Me = lazy(() => import("@/pages/Me.jsx"));
+const Register = lazy(() => import("@/pages/Register.jsx"));
+const Status = lazy(() => import("@/pages/Status.jsx"));
 
 export default function App() {
   const router = createBrowserRouter([
@@ -43,7 +42,7 @@ export default function App() {
             </Suspense>
           ),
           loader: ({ params }) => {
-           return getOneProduct(params.id);
+            return getOneProduct(params.id);
           },
         },
         {
@@ -79,28 +78,38 @@ export default function App() {
           ),
         },
         {
-          path: "/cart",
+          index: "",
           element: (
             <Suspense fallback={<Loading />}>
-              <Cart />
+              <ProtectLayout />
             </Suspense>
           ),
-        },
-        {
-          path: "/me",
-          element: (
-            <Suspense fallback={<Loading />}>
-              <Me />
-            </Suspense>
-          ),
-        },
-        {
-          path: "/status",
-          element: (
-            <Suspense fallback={<Loading />}>
-              <Status />
-            </Suspense>
-          ),
+          children: [
+            {
+              path: "/cart",
+              element: (
+                <Suspense fallback={<Loading />}>
+                  <Cart />
+                </Suspense>
+              ),
+            },
+            {
+              path: "/me",
+              element: (
+                <Suspense fallback={<Loading />}>
+                  <Me />
+                </Suspense>
+              ),
+            },
+            {
+              path: "/status",
+              element: (
+                <Suspense fallback={<Loading />}>
+                  <Status />
+                </Suspense>
+              ),
+            },
+          ],
         },
       ],
       errorElement: (
