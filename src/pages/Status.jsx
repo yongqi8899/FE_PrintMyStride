@@ -50,7 +50,7 @@ export default function Status() {
         </li>
         <li>
         <hr className="bg-green-700" />
-          <div className="timeline-start timeline-box">Foot impression</div>
+          <div className="timeline-start timeline-box">Feet impression</div>
           <div className="timeline-middle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
