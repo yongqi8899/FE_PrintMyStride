@@ -83,7 +83,7 @@ export default function Status() {
               />
             </svg>
           </div>
-          <div className="timeline-end timeline-box">Send your shoes</div>
+          <div className="timeline-end timeline-box">receive your shoes</div>
           <hr />
         </li>
         <li>
