@@ -20,6 +20,10 @@ export default function Header() {
   const closeDetails = () => {
     detailsRef.current.removeAttribute("open");
   };
+  function handleLogoutAndClose() {
+    logout();
+    closeDetails();
+}
   return (
     <header className="fixed top-0 z-50 text-xl navbar bold font-redressed bg-neutral">
       <div className="flex-1">
@@ -98,7 +102,16 @@ export default function Header() {
                 >
                   <p> Me</p>
                 </NavLink>
-                <NavLink onClick={logout}>Logout</NavLink>
+                <NavLink
+                  to="/orders"
+                  onClick={closeDetails}
+                  className={({ isActive }) =>
+                    `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
+                  }
+                >
+                  <p> Orders</p>
+                </NavLink>
+                <NavLink onClick={handleLogoutAndClose}>Logout</NavLink>
                 </div>
               </details>
             ) : (
