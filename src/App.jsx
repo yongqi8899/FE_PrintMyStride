@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 import { getAllProducts, getOneProduct } from "@/data/products/loaders.js";
+import { getAllOrders, getOneOrder } from "@/data/orders/loaders.js";
 
 import { createOrder, deleteOrder } from "@/data/orders/actions.js";
 
@@ -17,7 +18,8 @@ const Home = lazy(() => import("@/pages/Home.jsx"));
 const Login = lazy(() => import("@/pages/Login.jsx"));
 const Me = lazy(() => import("@/pages/Me.jsx"));
 const Register = lazy(() => import("@/pages/Register.jsx"));
-const Status = lazy(() => import("@/pages/Status.jsx"));
+const Order = lazy(() => import("@/pages/Order.jsx"));
+const Orders = lazy(() => import("@/pages/Orders.jsx"));
 
 export default function App() {
   const router = createBrowserRouter([
@@ -102,12 +104,24 @@ export default function App() {
               ),
             },
             {
-              path: "/status",
+              path: "/orders",
               element: (
                 <Suspense fallback={<Loading />}>
-                  <Status />
+                   <Orders />
                 </Suspense>
               ),
+              loader: getAllOrders,
+            },
+            {
+              path: "/orders/:id",
+              element: (
+                <Suspense fallback={<Loading />}>
+                  <Order />
+                </Suspense>
+              ),
+              loader: ({params})=>{
+                return getOneOrder(params.id)
+              },
             },
           ],
         },

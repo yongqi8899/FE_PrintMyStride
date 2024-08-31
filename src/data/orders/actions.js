@@ -26,9 +26,8 @@ export const createOrder = async (userId, cart, navigate) => {
     throw new Error(errorData.error);
   }
   const data = await res.json();
-  toast("Pay created successfully");
+  toast("Pay successfully");
   localStorage.removeItem("cart");
-  navigate("/status")
   return data;
 };
 
