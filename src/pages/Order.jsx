@@ -1,39 +1,60 @@
-import { useLoaderData} from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import { FaShoePrints } from "react-icons/fa";
+import { SiBlueprint } from "react-icons/si";
+import { FaShippingFast } from "react-icons/fa";
+import { CiDeliveryTruck } from "react-icons/ci";
+import { MdPayment } from "react-icons/md";
 
 export default function Order() {
-
   const order = useLoaderData();
   return (
-    <div className="flex flex-col items-center gap-10 mt-20 ">
-      <p className="max-w-gl text-xl md:mt-20">
-        Status: <div className="badge badge-secondary">{order.status}</div>
+    <div className="flex flex-col items-center justify-center gap-10 mt-10 m-auto">
+      <div className="flex  flex-col items-center max-w-gl text-xl md:mt-20">
+        <div>
+          Status: <p className="badge badge-secondary">{order.status}</p>
+        </div>
         {order.status == "payed" && (
+          <>
           <p>
             You will receive the foot impression in 2 days. Please make your
             foot impression as soon as possible.
           </p>
+          <MdPayment fontSize="8em" />
+          </>
         )}
         {order.status == "feet_impression" && (
-          <p>
-            We have received your feet impression. Your custom shoes are now
-            being prepared.
-          </p>
+          <>
+            <p>
+              We have received your feet impression. Your custom shoes are now
+              being prepared.
+            </p>
+            <FaShoePrints fontSize="8em" />
+          </>
         )}
         {order.status == "3D_Druck" && (
-          <p>
-            Your custom shoes are currently in the 3D printing process. They
-            will be ready soon.
-          </p>
+          <>
+            <p>
+              Your custom shoes are currently in the 3D printing process. They
+              will be ready soon.
+            </p>
+            <SiBlueprint fontSize="8em" />
+          </>
         )}
         {order.status == "shoe_shipped" && (
-          <p>Your shoes have been shipped. You will receive them shortly.</p>
+          <>
+            <p>Your shoes have been shipped. You will receive them shortly.</p>
+            <FaShippingFast fontSize="8em" />
+          </>
         )}
         {order.status == "shoe_delivered" && (
-          <p>Your shoes have been delivered. We hope you enjoy them!</p>
+          <>
+            <p>Your shoes have been delivered. We hope you enjoy them!</p>
+            <CiDeliveryTruck fontSize="8em" />
+          </>
         )}
-      </p>
+      </div>
 
-      <ul className="timeline md:mt-20">
+      <ul className="timeline md:mt-10">
         <li>
           <div className="timeline-start timeline-box">Designed Shoes</div>
           <div className="timeline-middle">
