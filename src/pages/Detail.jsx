@@ -10,7 +10,7 @@ const Detail = () => {
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(storedCart);
-  }, [setCart]);
+  }, [cart,setCart]);
 
   const product = useLoaderData();
   const productInCart = cart.find((p) => p?._id === product._id);

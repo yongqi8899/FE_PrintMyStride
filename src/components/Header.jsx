@@ -18,12 +18,14 @@ export default function Header() {
   const detailsRef = useRef(null);
 
   const closeDetails = () => {
-    detailsRef.current.removeAttribute("open");
+    if (detailsRef.current) {
+      detailsRef.current.open = false;
+    }
   };
   function handleLogoutAndClose() {
     logout();
     closeDetails();
-}
+  }
   return (
     <header className="fixed top-0 z-50 text-xl navbar bold font-redressed bg-neutral">
       <div className="flex-1">
@@ -83,7 +85,10 @@ export default function Header() {
           </li>
           <li>
             {isAuthenticated ? (
-              <details ref={detailsRef} className="flex items-center relative group">
+              <details
+                ref={detailsRef}
+                className="flex items-center relative group"
+              >
                 <summary className="flex items-center">
                   <div className="avatar">
                     <div className="w-10 rounded-full">
@@ -92,50 +97,60 @@ export default function Header() {
                   </div>
                 </summary>
                 <div className="absolute top-full left-0 bg-neutral p-2 z-50 hidden group-open:block">
-       
-                <NavLink
-                  to="/me"
-                  onClick={closeDetails}
-                  className={({ isActive }) =>
-                    `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
-                  }
-                >
-                  <p> Me</p>
-                </NavLink>
-                <NavLink
-                  to="/orders"
-                  onClick={closeDetails}
-                  className={({ isActive }) =>
-                    `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
-                  }
-                >
-                  <p> Orders</p>
-                </NavLink>
-                <NavLink onClick={handleLogoutAndClose}>Logout</NavLink>
+                  <NavLink
+                    to="/me"
+                    onClick={closeDetails}
+                    className={({ isActive }) =>
+                      `${
+                        isActive ? "text-secondary" : ""
+                      } text-xl btn btn-ghost`
+                    }
+                  >
+                    <p> Me</p>
+                  </NavLink>
+                  <NavLink
+                    to="/orders"
+                    onClick={closeDetails}
+                    className={({ isActive }) =>
+                      `${
+                        isActive ? "text-secondary" : ""
+                      } text-xl btn btn-ghost`
+                    }
+                  >
+                    <p> Orders</p>
+                  </NavLink>
+                  <NavLink onClick={handleLogoutAndClose} className="text-xl btn btn-ghost">Logout</NavLink>
                 </div>
               </details>
             ) : (
-              <details ref={detailsRef} className="flex items-center relative group">
+              <details
+                ref={detailsRef}
+                className="flex items-center relative group"
+              >
                 <summary>Login</summary>
                 <div className="absolute top-full left-0 bg-neutral p-2 z-50 hidden group-open:block">
-                <NavLink
-                  to="/login"
-                  onClick={closeDetails}
-                  className={({ isActive }) =>
-                    `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
-                  }
-                >
-                  Login
-                </NavLink>
-                <NavLink
-                  to="/register"
-                  onClick={closeDetails}
-                  className={({ isActive }) =>
-                    `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
-                  }
-                >
-                  Register
-                </NavLink>
+                  <NavLink
+                    to="/login"
+                    onClick={closeDetails}
+                    className={({ isActive }) =>
+                      `${
+                        isActive ? "text-secondary" : ""
+                      } text-xl btn btn-ghost`
+                    }
+                  >
+                    Login
+                  </NavLink>
+                  <NavLink
+                    to="/register"
+                    onClick={closeDetails}
+                    className={({ isActive }) =>
+                      `${
+                        isActive ? "text-secondary" : ""
+                      } text-xl btn btn-ghost`
+                    }
+                  >
+                    Register
+                  </NavLink>
                 </div>
               </details>
             )}
