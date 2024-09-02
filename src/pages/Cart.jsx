@@ -1,13 +1,8 @@
 import { Alert, CartTable } from "@/components";
 import { useCart } from "@/context";
-import { useEffect } from "react";
 
 const Cart = () => {
   const { cart, setCart } = useCart();
-  // useEffect(() => {
-  //   const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-  //   setCart(storedCart);
-  // }, [setCart, cart]);
 
   if (!cart.length)
     return (

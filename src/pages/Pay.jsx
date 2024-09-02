@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useState,  } from "react";
 import { useLocation, Form } from "react-router-dom";
-import { createPayment } from "@/data/pays/actions";
 
 export default function PaymentPage() {
+  const cart = JSON.parse(localStorage.getItem("cart"));
+
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const orderId = queryParams.get("orderId");
-  console.log("queryParams", queryParams);
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -29,7 +29,6 @@ export default function PaymentPage() {
     });
   };
 
-
   return (
     <div className="container mx-auto p-8">
       <h2 className="text-2xl font-bold mb-8">Payment Information</h2>
@@ -38,7 +37,6 @@ export default function PaymentPage() {
           <label className="block text-sm font-medium hidden"></label>
           <input
             name="orderId"
-            value={formData.orderId}
             onChange={handleChange}
             type="text"
             className="w-full p-2 mt-2 border rounded hidden"

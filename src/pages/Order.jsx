@@ -1,9 +1,8 @@
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { useLoaderData} from "react-router-dom";
 
 export default function Order() {
+
   const order = useLoaderData();
-  const navigate = useNavigate();
-  console.log("order id Order", order);
   return (
     <div className="flex flex-col items-center gap-10 mt-20 ">
       <p className="max-w-gl text-xl md:mt-20">

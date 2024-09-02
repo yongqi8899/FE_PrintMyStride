@@ -6,7 +6,6 @@ import {
 } from "@/utils/cartUtils";
 import Img from "@/components/Img";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { createOrder } from "@/data/orders/actions.js";
 import { useAuth } from "@/context";
 
@@ -14,15 +13,9 @@ const CartTable = ({ cart, setCart }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const userId = user._id;
-  // useEffect(() => {
-  //   const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-  //   setCart(storedCart);
-  // }, [cart]);
-
   const handlePayProcess = async () => {
     try {
       const orderData = await createOrder(userId, cart);
-      console.log("orderData", orderData);
       if (orderData) {
         navigate(`/pay?orderId=${orderData.newOrder._id}`);
       }

@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 
 export const createOrder = async (userId, cart) => {
-  const formData = {
+ const formData = {
     status: "payed",
     userId:  userId,
     products: cart.map(item => ({
@@ -26,7 +26,6 @@ export const createOrder = async (userId, cart) => {
     throw new Error(errorData.error);
   }
   const data = await res.json();
-  toast("Go to pay");
   localStorage.removeItem("cart");
   return data;
 };
