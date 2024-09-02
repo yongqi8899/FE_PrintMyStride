@@ -3,9 +3,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { signin } from "@/data/auth/index.js";
 import { useAuth } from "@/context/index.js";
-import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaKey } from "react-icons/fa";
 
@@ -94,12 +92,10 @@ export default function Login() {
             <span className="flex-shrink mx-4 text-xs">OR</span>
             <div className="flex-grow border-t "></div>
           </div>
-          <div className="flex justify-center gap-2">
-            <FaFacebook color="#1877f2" fontSize="1.5em" />
+          <div className="flex justify-center">
             <div onClick={logWithGoogle}>
               <FcGoogle fontSize="1.5em" />
             </div>
-            <FaGithub fontSize="1.5em" />
           </div>
 
           <small>

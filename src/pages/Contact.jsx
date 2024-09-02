@@ -1,11 +1,12 @@
 import { useState } from "react";
 
 const Contact = () => {
-  const [{ firstName, email, lastName, tel }, setForm] = useState({
+  const [{ firstName, email, lastName, tel, message }, setForm] = useState({
     firstName: "",
     email: "",
     lastName: "",
     tel: "",
+    message:""
   });
   const [loading, setLoading] = useState(false);
 
@@ -96,7 +97,7 @@ const Contact = () => {
           </label>
           <textarea
             className="textarea textarea-bordered"
-            placeholder="Write to us"
+            placeholder="Message"
           ></textarea>
 
           <button className="btn btn-gradient-blue" disabled={loading}>

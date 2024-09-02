@@ -4,9 +4,7 @@ import { toast } from "react-toastify";
 import { signup } from "@/data/auth/index.js";
 import { useAuth } from "@/context/index.js";
 
-import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaKey } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
@@ -14,6 +12,7 @@ import { FaUser } from "react-icons/fa";
 import { account } from "@/utils/appwrite.js";
 
 export default function Register() {
+  const navigate = useNavigate();
   const { isAuthenticated, setCheckSession, setIsAuthenticated } = useAuth();
   const [{ userName, email, password, confirmPassword }, setForm] = useState({
     userName: "",
@@ -22,6 +21,14 @@ export default function Register() {
     confirmPassword: "",
   });
   const [loading, setLoading] = useState(false);
+  const resetForm = () => {
+    setForm({
+      userName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+  }
 
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -40,11 +47,16 @@ export default function Register() {
         password,
       });
       toast.success(res.success);
+      setIsAuthenticated(true);
+      navigate(location.state?.next || "/");
     } catch (error) {
       toast.error(error.message);
+      if (error.message === "User already exists"){
+        resetForm()
+        navigate("/login")
+      }
     } finally {
       setLoading(false);
-      setIsAuthenticated(true);
     }
   };
 
@@ -123,12 +135,10 @@ export default function Register() {
             <span className="flex-shrink mx-4 text-xs">OR</span>
             <div className="flex-grow border-t "></div>
           </div>
-          <div className="flex justify-center gap-2">
-            <FaFacebook color="#1877f2" fontSize="1.5em" />
+          <div className="flex justify-center">
             <div onClick={logWithGoogle}>
               <FcGoogle fontSize="1.5em" />
             </div>
-            <FaGithub fontSize="1.5em" />
           </div>
           <small>
             Already have an account?{" "}
