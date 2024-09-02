@@ -2,15 +2,10 @@ import { addToCart, formatCurrency, removeFromCart } from "@/utils/cartUtils";
 import { useCart } from "@/context";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Img from "@/components/Img";
-import { useEffect } from "react";
 
 const Detail = () => {
   const navigate = useNavigate();
   const { cart, setCart } = useCart();
-  // useEffect(() => {
-  //   const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-  //   setCart(storedCart);
-  // }, [cart,setCart]);
 
   const product = useLoaderData();
   const productInCart = cart.find((p) => p?._id === product._id);

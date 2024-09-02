@@ -17,6 +17,7 @@ const CartTable = ({ cart, setCart }) => {
     try {
       const orderData = await createOrder(userId, cart);
       if (orderData) {
+        setCart(resetCart());
         navigate(`/pay?orderId=${orderData.newOrder._id}`);
       }
       
