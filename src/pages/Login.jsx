@@ -34,11 +34,11 @@ export default function Login() {
         password,
       });
       toast.success(res.success);
+      setIsAuthenticated(true);
     } catch (error) {
       toast.error(error.message);
     } finally {
       setLoading(false);
-      setIsAuthenticated(true);
     }
   };
 
