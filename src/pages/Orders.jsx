@@ -9,8 +9,8 @@ export default function Orders() {
   const orders = data.filter((o) => o.userId._id === user._id);
   return (
     <div className="overflow-x-auto">
-      <table className="table">
-        <thead>
+      <table className="table" style={{ tableLayout: "fixed", width: "100%" }}>
+      <thead>
           <tr>
             <th>Order ID</th>
             <th>Order Date</th>
@@ -22,6 +22,7 @@ export default function Orders() {
           {orders.map((order) => (
             <tr key={order._id}>
               <td>{order._id}</td>
+    
               <td>
                 <span className="badge badge-ghost badge-sm">
                   {formatDate(order.orderDate)}
@@ -30,14 +31,14 @@ export default function Orders() {
               <td className="align-middle">
                 <span className="badge badge-secondary">{order.status}</span>
               </td>
-              <th>
+              <td>
                 <button
                   className="btn btn-ghost btn-xs"
                   onClick={() => navigate(`/orders/${order._id}`)}
                 >
                   details
                 </button>
-              </th>
+              </td>
             </tr>
           ))}
         </tbody>
