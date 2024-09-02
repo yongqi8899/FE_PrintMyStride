@@ -4,12 +4,12 @@ import { useEffect } from "react";
 
 const Cart = () => {
   const { cart, setCart } = useCart();
-  useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(storedCart);
-  }, [setCart, cart]);
+  // useEffect(() => {
+  //   const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+  //   setCart(storedCart);
+  // }, [setCart, cart]);
 
-  if (!cart.length>0)
+  if (!cart.length)
     return (
       <div className="mt-5">
         <Alert message="Your cart is empty :(" />

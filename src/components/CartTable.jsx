@@ -14,10 +14,23 @@ const CartTable = ({ cart, setCart }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const userId = user._id;
-  useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(storedCart);
-  }, [setCart]);
+  // useEffect(() => {
+  //   const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+  //   setCart(storedCart);
+  // }, [cart]);
+
+  const handlePayProcess = async () => {
+    try {
+      const orderData = await createOrder(userId, cart);
+      console.log("orderData", orderData);
+      if (orderData) {
+        navigate(`/pay?orderId=${orderData.newOrder._id}`);
+      }
+      
+    } catch (error) {
+      console.error("Failed to create order:", error);
+    }
+  };
   return (
     <>
       {cart && (
@@ -98,7 +111,7 @@ const CartTable = ({ cart, setCart }) => {
                 <th>
                   <button
                     className="w-20 btn btn-gradient-blue"
-                    onClick={navigate("/pay")}
+                    onClick={handlePayProcess}
                   >
                     Pay
                   </button>

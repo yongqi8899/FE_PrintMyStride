@@ -7,10 +7,10 @@ import { useEffect } from "react";
 const Detail = () => {
   const navigate = useNavigate();
   const { cart, setCart } = useCart();
-  useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(storedCart);
-  }, [cart,setCart]);
+  // useEffect(() => {
+  //   const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+  //   setCart(storedCart);
+  // }, [cart,setCart]);
 
   const product = useLoaderData();
   const productInCart = cart.find((p) => p?._id === product._id);

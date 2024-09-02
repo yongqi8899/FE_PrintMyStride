@@ -1,6 +1,12 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { createPayment } from "@/data/pays/actions";
 
 export default function PaymentPage() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const orderId = queryParams.get("orderId");
+  console.log("queryParams", queryParams);
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -11,6 +17,7 @@ export default function PaymentPage() {
     cardNumber: "",
     expiryDate: "",
     cvv: "",
+    orderId: orderId,
   });
 
   const [loading, setLoading] = useState(false);
@@ -26,8 +33,8 @@ export default function PaymentPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      // Implement your order creation logic here
-      console.log("Payment submitted", { firstName, lastName, email, tel, address });
+      await createPayment();
+      console.log("Zahlung erfolgreich");
     } finally {
       setLoading(false);
     }
@@ -36,6 +43,18 @@ export default function PaymentPage() {
     <div className="container mx-auto p-8">
       <h2 className="text-2xl font-bold mb-8">Payment Information</h2>
       <form onSubmit={handleSubmit} className="space-y-6">
+        <div>
+          <label className="block text-sm font-medium hidden"></label>
+          <input
+            name="orderId"
+            value={orderId}
+            onChange={handleChange}
+            type="text"
+            className="w-full p-2 mt-2 border rounded hidden"
+            placeholder="Full Name"
+            defaultValue={orderId}
+          />
+        </div>
         <div>
           <label className="block text-sm font-medium">Full Name</label>
           <input
@@ -151,12 +170,14 @@ export default function PaymentPage() {
           </div>
         </div>
         <button
-            type="submit"
-            className={`w-full p-3 mt-4 text-white  btn-gradient-blue rounded ${loading && "opacity-50 cursor-not-allowed"}`}
-            disabled={loading}
-          >
-            {loading ? "Processing..." : "Pay"}
-          </button>
+          type="submit"
+          className={`w-full p-3 mt-4 text-white  btn-gradient-blue rounded ${
+            loading && "opacity-50 cursor-not-allowed"
+          }`}
+          disabled={loading}
+        >
+          {loading ? "Processing..." : "Pay"}
+        </button>
       </form>
     </div>
   );
