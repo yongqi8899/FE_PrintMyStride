@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 
-export const createOrder = async (userId, cart, navigate) => {
+export const createOrder = async (userId, cart) => {
   const formData = {
     status: "payed",
     userId:  userId,

@@ -20,6 +20,7 @@ const Me = lazy(() => import("@/pages/Me.jsx"));
 const Register = lazy(() => import("@/pages/Register.jsx"));
 const Order = lazy(() => import("@/pages/Order.jsx"));
 const Orders = lazy(() => import("@/pages/Orders.jsx"));
+const Pay = lazy(() => import("@/pages/Pay.jsx"));
 
 export default function App() {
   const router = createBrowserRouter([
@@ -122,6 +123,14 @@ export default function App() {
               loader: ({params})=>{
                 return getOneOrder(params.id)
               },
+            },
+            {
+              path: "/pay",
+              element: (
+                <Suspense fallback={<Loading />}>
+                  <Pay />
+                </Suspense>
+              )
             },
           ],
         },
