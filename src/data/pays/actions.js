@@ -1,3 +1,4 @@
+import { redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 export const createPayment = async ({ request }) => {
@@ -12,13 +13,6 @@ export const createPayment = async ({ request }) => {
     body: JSON.stringify(formData),
   });
 
-  if (!res.ok) {
-    const errorData = await res.json();
-    if (!errorData.error) {
-      throw new Error("An Error occured while paying");
-    }
-    throw new Error(errorData.error);
-  }
-  const data = await res.json();
-  return data;
+
+  return redirect('/');
 };

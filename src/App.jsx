@@ -5,6 +5,7 @@ import { getAllProducts, getOneProduct } from "@/data/products/loaders.js";
 import { getAllOrders, getOneOrder } from "@/data/orders/loaders.js";
 
 import { createOrder, deleteOrder } from "@/data/orders/actions.js";
+import { createPayment } from "@/data/pays/actions.js";
 
 import { RootLayout, ProtectLayout } from "@/layout";
 import Loading from "@/components/Loading.jsx";
@@ -130,7 +131,8 @@ export default function App() {
                 <Suspense fallback={<Loading />}>
                   <Pay />
                 </Suspense>
-              )
+              ),
+              action: createPayment,
             },
           ],
         },

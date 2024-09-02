@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Form } from "react-router-dom";
 import { createPayment } from "@/data/pays/actions";
 
 export default function PaymentPage() {
@@ -29,25 +29,16 @@ export default function PaymentPage() {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      await createPayment();
-      console.log("Zahlung erfolgreich");
-    } finally {
-      setLoading(false);
-    }
-  };
+
   return (
     <div className="container mx-auto p-8">
       <h2 className="text-2xl font-bold mb-8">Payment Information</h2>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <Form method="POST">
         <div>
           <label className="block text-sm font-medium hidden"></label>
           <input
             name="orderId"
-            value={orderId}
+            value={formData.orderId}
             onChange={handleChange}
             type="text"
             className="w-full p-2 mt-2 border rounded hidden"
@@ -178,7 +169,7 @@ export default function PaymentPage() {
         >
           {loading ? "Processing..." : "Pay"}
         </button>
-      </form>
+      </Form>
     </div>
   );
 }
