@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "@/context/index.js";
 
 export default function Header() {
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, user } = useAuth();
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   useEffect(() => {
@@ -87,7 +87,7 @@ export default function Header() {
             {isAuthenticated ? (
               <details
                 ref={detailsRef}
-                className="flex items-center relative group"
+                className="relative flex items-center group"
               >
                 <summary className="flex items-center">
                   <div className="avatar">
@@ -96,7 +96,7 @@ export default function Header() {
                     </div>
                   </div>
                 </summary>
-                <div className="absolute top-full left-0 bg-neutral p-2 z-50 hidden group-open:block">
+                <div className="absolute left-0 z-50 hidden p-2 top-full bg-neutral group-open:block">
                   <NavLink
                     to="/me"
                     onClick={closeDetails}
@@ -109,7 +109,7 @@ export default function Header() {
                     <p> Me</p>
                   </NavLink>
                   <NavLink
-                    to="/orders"
+                    to={`/orders/user/${user._id}`}
                     onClick={closeDetails}
                     className={({ isActive }) =>
                       `${
@@ -125,10 +125,10 @@ export default function Header() {
             ) : (
               <details
                 ref={detailsRef}
-                className="flex items-center relative group"
+                className="relative flex items-center group"
               >
                 <summary>Login</summary>
-                <div className="absolute top-full left-0 bg-neutral p-2 z-50 hidden group-open:block">
+                <div className="absolute left-0 z-50 hidden p-2 top-full bg-neutral group-open:block">
                   <NavLink
                     to="/login"
                     onClick={closeDetails}

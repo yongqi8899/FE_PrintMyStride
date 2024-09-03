@@ -11,7 +11,7 @@ export default function RootLayout() {
   return (
     <div>
       <ToastContainer position="top-right" autoClose={1500} theme="light" />
-      {/* <AuthContextProvider> */}
+      <AuthContextProvider>
         <CartProvider>
           <div className="hidden md:block">
             <Header />
@@ -24,7 +24,7 @@ export default function RootLayout() {
           </div>
           <Footer />
         </CartProvider>
-      {/* </AuthContextProvider> */}
+      </AuthContextProvider>
     </div>
   );
 }

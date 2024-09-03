@@ -25,7 +25,6 @@ const Orders = lazy(() => import("@/pages/Orders.jsx"));
 const Pay = lazy(() => import("@/pages/Pay.jsx"));
 
 export default function App() {
-  const { user } = useAuth();
   const router = createBrowserRouter([
     {
       path: "/",
@@ -109,14 +108,14 @@ export default function App() {
               ),
             },
             {
-              path: "/orders",
+              path: "/orders/user/:userId",
               element: (
                 <Suspense fallback={<Loading />}>
                   <Orders />
                 </Suspense>
               ),
-              loader: async () => {
-                return getAllOrders(user?._id);
+              loader: ({ params }) => {
+                return getAllOrders(params.userId);
               },
             },
             {
