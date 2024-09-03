@@ -1,5 +1,3 @@
-import { useAuth } from "@/context/index.js";
-
 export const getAllOrders = async (userId) => {
   const res = await fetch(`http://localhost:8080/orders?userId=${userId}`);
   if (res.status !== 200) throw Error("something went wrong");
