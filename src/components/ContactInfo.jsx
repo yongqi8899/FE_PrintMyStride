@@ -22,13 +22,13 @@ const ContactInfo = () => {
       <h3 className="mt-6 text-xl rounded-lg text-secondary">Follow Us</h3>
       <div className="flex justify-start gap-6 mt-2">
         <span className="cursor-pointer">
-          <FaSquareFacebook fontSize="2em" />
+          <FaSquareFacebook fontSize="1.8em" />
         </span>
         <span className="cursor-pointer">
-          <FaSquareInstagram fontSize="2em" />
+          <FaSquareInstagram fontSize="1.8em" />
         </span>
         <span className="cursor-pointer">
-          <FaXTwitter fontSize="2em" />
+          <FaXTwitter fontSize="1.8em" />
         </span>
       </div>
     </div>

@@ -1,9 +1,10 @@
 import { redirect } from "react-router-dom";
 import { showToast } from "@/utils/index";
 
+const API_URL = import.meta.env.VITE_BASE_URL  || 'http://localhost:8080';
 export const createProduct = async ({ request }) => {
   const formData = Object.fromEntries(await request.formData());
-  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products`, {
+  const res = await fetch(`${API_URL}/products`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -18,7 +19,7 @@ export const createProduct = async ({ request }) => {
 export const updateProduct = async ({ params, request }) => {
   const id = params.id;
   const formData = Object.fromEntries(await request.formData());
-  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products/${id}`, {
+  const res = await fetch(`${API_URL}/products/${id}`, {
     method: "PUT",
     headers: {
       "content-type": "application/json",
@@ -32,7 +33,7 @@ export const updateProduct = async ({ params, request }) => {
 
 export const deleteProduct = async ({ params }) => {
   const id = params.id;
-  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products/${id}`, {
+  const res = await fetch(`${API_URL}/products/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
