@@ -66,6 +66,17 @@ export default function NavMobil() {
               <NavLink to="/me" onClick={closeDetails}>
                 <p> Me</p>
               </NavLink>
+              <NavLink
+                    to="/orders"
+                    onClick={closeDetails}
+                    className={({ isActive }) =>
+                      `${
+                        isActive ? "text-secondary" : ""
+                      } text-xl btn btn-ghost`
+                    }
+                  >
+                    <p> Orders</p>
+                  </NavLink>
               <NavLink onClick={logout}>Logout</NavLink>
             </details>
           ) : (
