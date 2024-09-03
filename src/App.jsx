@@ -9,6 +9,7 @@ import { createPayment } from "@/data/pays/actions.js";
 
 import { RootLayout, ProtectLayout } from "@/layout";
 import Loading from "@/components/Loading.jsx";
+import { useAuth } from "@/context/index.js";
 
 const About = lazy(() => import("@/pages/About.jsx"));
 const Cart = lazy(() => import("@/pages/Cart.jsx"));
@@ -22,11 +23,9 @@ const Register = lazy(() => import("@/pages/Register.jsx"));
 const Order = lazy(() => import("@/pages/Order.jsx"));
 const Orders = lazy(() => import("@/pages/Orders.jsx"));
 const Pay = lazy(() => import("@/pages/Pay.jsx"));
-import { useAuth } from "@/context/index.js";
 
 export default function App() {
   const { user } = useAuth();
-  console.log("user App", user);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -116,7 +115,7 @@ export default function App() {
                   <Orders />
                 </Suspense>
               ),
-              loader: getAllOrders,
+              loader: getAllOrders(user._id),
             },
             {
               path: "/orders/:id",
