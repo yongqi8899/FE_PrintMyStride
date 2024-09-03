@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ContactInfo from "@/components/ContactInfo";
 
 const Contact = () => {
   const [{ firstName, email, lastName, tel, message }, setForm] = useState({
@@ -6,7 +7,7 @@ const Contact = () => {
     email: "",
     lastName: "",
     tel: "",
-    message:""
+    message: "",
   });
   const [loading, setLoading] = useState(false);
 
@@ -17,7 +18,7 @@ const Contact = () => {
     console.log("submit");
   };
   return (
-    <div className="flex flex-wrap gap-10 m-10 md:flex-nowrap">
+    <div className="flex flex-col items-center justify-center gap-10 m-10 md:flex-row">
       <div className="w-full md:w-1/2">
         <form className="flex flex-col gap-3 " onSubmit={handleSubmit}>
           <h1 className="text-2xl font-bold">contact us</h1>
@@ -105,7 +106,9 @@ const Contact = () => {
           </button>
         </form>
       </div>
-      <div className="w-full md:w-1/2">map</div>
+      <div className="w-full md:w-1/3">
+        <ContactInfo />
+      </div>
     </div>
   );
 };

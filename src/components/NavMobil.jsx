@@ -6,7 +6,7 @@ import { useAuth } from "@/context/index.js";
 export default function NavMobil() {
   const [isOpen, setOpen] = useState(false);
   const location = useLocation();
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, user } = useAuth();
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function NavMobil() {
     const localTheme = localStorage.getItem("theme");
     document.querySelector("html").setAttribute("data-theme", localTheme);
   }, [theme]);
-  
+
   const handleToggle = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
@@ -55,41 +55,47 @@ export default function NavMobil() {
         </svg>
       </label>
       {isAuthenticated ? (
-            <details ref={detailsRef} className="flex items-center ">
-              <summary className="flex items-center">
-                <div className="avatar">
-                  <div className="w-10 rounded-full">
-                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                  </div>
-                </div>
-              </summary>
-              <NavLink to="/me" onClick={closeDetails}>
-                <p> Me</p>
-              </NavLink>
-              <NavLink
-                    to="/orders"
-                    onClick={closeDetails}
-                    className={({ isActive }) =>
-                      `${
-                        isActive ? "text-secondary" : ""
-                      } text-xl btn btn-ghost`
-                    }
-                  >
-                    <p> Orders</p>
-                  </NavLink>
-              <NavLink onClick={logout}>Logout</NavLink>
-            </details>
-          ) : (
-            <details ref={detailsRef} className="flex items-center ">
-              <summary>Login</summary>
-              <NavLink to="/login" onClick={closeDetails}>
-                Login
-              </NavLink>
-              <NavLink to="/register" onClick={closeDetails}>
-                Register
-              </NavLink>
-            </details>
-          )}
+        <details ref={detailsRef} className="flex items-center ">
+          <summary className="flex items-center">
+            <div className="avatar">
+              <div className="w-10 rounded-full">
+                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+              </div>
+            </div>
+          </summary>
+          <NavLink
+            to="/me"
+            onClick={closeDetails}
+            className="text-xl btn btn-ghost"
+          >
+            <p> Me</p>
+          </NavLink>
+          <NavLink
+            to={`/orders/user/${user._id}`}
+            onClick={closeDetails}
+            className={({ isActive }) =>
+              `text-xl btn btn-ghost ${
+                isActive ? "text-secondary" : ""
+              } text-xl btn btn-ghost`
+            }
+          >
+            <p> Orders</p>
+          </NavLink>
+          <NavLink onClick={logout} className="text-xl btn btn-ghost">
+            Logout
+          </NavLink>
+        </details>
+      ) : (
+        <details ref={detailsRef} className="flex items-center ">
+          <summary>Login</summary>
+          <NavLink to="/login" onClick={closeDetails}>
+            Login
+          </NavLink>
+          <NavLink to="/register" onClick={closeDetails}>
+            Register
+          </NavLink>
+        </details>
+      )}
       <div className="z-20 ">
         <Hamburger
           size={34}
@@ -100,60 +106,60 @@ export default function NavMobil() {
         />
       </div>
       {isOpen && (
-          <ul className="fixed top-0 left-0 flex flex-col items-center justify-center w-screen h-full gap-8 text-xl text-center z-199 bg-neutral">
-            <li>
-              {" "}
-              <NavLink
-                to="/"
-                onClick={() => setOpen(false)}
-                role="button"
-                className={({ isActive }) =>
-                  isActive ? "text-secondary text-2xl" : "text-xl"
-                }
-              >
-                Products
-              </NavLink>
-            </li>
-            <li>
-              {" "}
-              <NavLink
-                to="/about"
-                onClick={() => setOpen(false)}
-                role="button"
-                className={({ isActive }) =>
-                  isActive ? "text-secondary" : "text-xl"
-                }
-              >
-                About
-              </NavLink>
-            </li>
-            <li>
-              {" "}
-              <NavLink
-                to="/contact"
-                onClick={() => setOpen(false)}
-                role="button"
-                className={({ isActive }) =>
-                  isActive ? "text-secondary" : "text-xl"
-                }
-              >
-                Contact
-              </NavLink>
-            </li>
-            <li>
-              {" "}
-              <NavLink
-                to="/cart"
-                onClick={() => setOpen(false)}
-                role="button"
-                className={({ isActive }) =>
-                  isActive ? "text-secondary" : "text-xl"
-                }
-              >
-                Cart
-              </NavLink>
-            </li>
-          </ul>
+        <ul className="fixed top-0 left-0 flex flex-col items-center justify-center w-screen h-full gap-8 text-xl text-center z-199 bg-neutral">
+          <li>
+            {" "}
+            <NavLink
+              to="/"
+              onClick={() => setOpen(false)}
+              role="button"
+              className={({ isActive }) =>
+                isActive ? "text-secondary text-2xl" : "text-xl"
+              }
+            >
+              Products
+            </NavLink>
+          </li>
+          <li>
+            {" "}
+            <NavLink
+              to="/about"
+              onClick={() => setOpen(false)}
+              role="button"
+              className={({ isActive }) =>
+                isActive ? "text-secondary" : "text-xl"
+              }
+            >
+              About
+            </NavLink>
+          </li>
+          <li>
+            {" "}
+            <NavLink
+              to="/contact"
+              onClick={() => setOpen(false)}
+              role="button"
+              className={({ isActive }) =>
+                isActive ? "text-secondary" : "text-xl"
+              }
+            >
+              Contact
+            </NavLink>
+          </li>
+          <li>
+            {" "}
+            <NavLink
+              to="/cart"
+              onClick={() => setOpen(false)}
+              role="button"
+              className={({ isActive }) =>
+                isActive ? "text-secondary" : "text-xl"
+              }
+            >
+              Cart
+            </NavLink>
+          </li>
+        </ul>
       )}
     </header>
   );
