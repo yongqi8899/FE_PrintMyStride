@@ -115,9 +115,7 @@ export default function App() {
                   <Orders />
                 </Suspense>
               ),
-              loader: () => {
-                return fetch(`http://localhost:8080/orders?userId=${user._id}`);
-              },
+              loader: () => getAllOrders(user._id),
             },
             {
               path: "/orders/:id",
