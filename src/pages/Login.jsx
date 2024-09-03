@@ -35,6 +35,7 @@ export default function Login() {
       });
       toast.success(res.success);
       setIsAuthenticated(true);
+      setCheckSession(true);
     } catch (error) {
       toast.error(error.message);
     } finally {
