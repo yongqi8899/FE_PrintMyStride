@@ -3,10 +3,8 @@ import { useAuth } from "@/context/index.js";
 import {formatDate} from "@/utils/index.js";
 
 export default function Orders() {
-  const data = useLoaderData();
+  const orders = useLoaderData();
   const navigate = useNavigate()
-  const { user } = useAuth();
-  const orders = data.filter((o) => o.userId._id === user._id);
   return (
     <div className="overflow-x-auto">
       <table className="table" style={{ tableLayout: "fixed", width: "100%" }}>

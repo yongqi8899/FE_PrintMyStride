@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link,useLoaderData } from "react-router-dom";
 import ProductsCard from "@/components/ProductsCard";
 import { formatCurrency } from "@/utils/cartUtils";
 import { useCart } from "@/context";
 const Home = () => {
-  const { products } = useCart();
+  const products = useLoaderData();
 
   return (
     <div className="grid gap-4 mx-auto justify-items-center md:grid-cols-3">

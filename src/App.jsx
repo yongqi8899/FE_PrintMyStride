@@ -22,8 +22,11 @@ const Register = lazy(() => import("@/pages/Register.jsx"));
 const Order = lazy(() => import("@/pages/Order.jsx"));
 const Orders = lazy(() => import("@/pages/Orders.jsx"));
 const Pay = lazy(() => import("@/pages/Pay.jsx"));
+import { useAuth } from "@/context/index.js";
 
 export default function App() {
+  const { user } = useAuth();
+  console.log("user App", user);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -37,6 +40,7 @@ export default function App() {
               <Home />
             </Suspense>
           ),
+          loader: getAllProducts,
         },
         {
           path: "/products/:id",
@@ -109,7 +113,7 @@ export default function App() {
               path: "/orders",
               element: (
                 <Suspense fallback={<Loading />}>
-                   <Orders />
+                  <Orders />
                 </Suspense>
               ),
               loader: getAllOrders,
@@ -121,8 +125,8 @@ export default function App() {
                   <Order />
                 </Suspense>
               ),
-              loader: ({params})=>{
-                return getOneOrder(params.id)
+              loader: ({ params }) => {
+                return getOneOrder(params.id);
               },
             },
             {

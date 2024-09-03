@@ -12,6 +12,7 @@ import { useAuth } from "@/context";
 const CartTable = ({ cart, setCart }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
+  console.log("user", user);
   const userId = user._id;
   const handlePayProcess = async () => {
     try {
