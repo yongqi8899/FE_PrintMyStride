@@ -115,7 +115,9 @@ export default function App() {
                   <Orders />
                 </Suspense>
               ),
-              loader: () => getAllOrders(user._id),
+              loader: async () => {
+                return getAllOrders(user?._id);
+              },
             },
             {
               path: "/orders/:id",
