@@ -4,7 +4,7 @@ import { useAuth } from "@/context/index.js";
 
 export default function Header() {
   const { isAuthenticated, logout, user } = useAuth();
-
+  if (!user) return <div>loading...</div>;
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -119,7 +119,12 @@ export default function Header() {
                   >
                     <p> Orders</p>
                   </NavLink>
-                  <NavLink onClick={handleLogoutAndClose} className="text-xl btn btn-ghost">Logout</NavLink>
+                  <NavLink
+                    onClick={handleLogoutAndClose}
+                    className="text-xl btn btn-ghost"
+                  >
+                    Logout
+                  </NavLink>
                 </div>
               </details>
             ) : (

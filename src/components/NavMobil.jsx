@@ -5,7 +5,6 @@ import { useAuth } from "@/context/index.js";
 
 export default function NavMobil() {
   const [isOpen, setOpen] = useState(false);
-  const location = useLocation();
   const { isAuthenticated, logout, user } = useAuth();
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
