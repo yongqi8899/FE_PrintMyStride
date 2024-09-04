@@ -4,7 +4,6 @@ import { useAuth } from "@/context/index.js";
 
 export default function Header() {
   const { isAuthenticated, logout, user } = useAuth();
-  if (!user) return <div>loading...</div>;
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -109,7 +108,7 @@ export default function Header() {
                     <p> Me</p>
                   </NavLink>
                   <NavLink
-                    to={`/orders/user/${user._id}`}
+                    to={`/orders/user/${user?._id}`}
                     onClick={closeDetails}
                     className={({ isActive }) =>
                       `${
