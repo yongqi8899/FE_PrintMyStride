@@ -30,7 +30,9 @@ export default function Orders() {
               </tr>
             </thead>
             <tbody>
-              {orders.map((order) => (
+              {orders
+              .sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate))
+              .map((order) => (
                 <tr key={order._id}>
                   <td>{order._id}</td>
 
