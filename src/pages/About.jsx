@@ -12,9 +12,9 @@ const About = () => {
             <div class="transform rotate-45 border-t-2 border-r-2 border-base-content w-3 h-3 z-1"></div>
           </div>
         </div>
-        <div style={{ marginTop: '-110px' }}>
+     
           <img src={img} alt="a image about shoe" />
-        </div>
+      
       </div>
       <div className="w-full md:w-1/2">
         <p>
