@@ -16,9 +16,6 @@ export default function Me() {
           <h2 className="card-title">{user.userName}</h2>
           <p>{user.email}</p>
           <p>{user.role}</p>
-          {/* <div className="justify-end card-actions">
-          <button className="btn btn-primary">Edit</button>
-        </div> */}
         </div>
       </div>
     )

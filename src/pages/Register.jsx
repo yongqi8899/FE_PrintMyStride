@@ -103,6 +103,7 @@ export default function Register() {
               type="email"
               className="grow"
               placeholder="Email"
+              autocomplete="email"
             />
           </label>
           <label className="flex items-center gap-2 grow input input-bordered">
@@ -114,6 +115,7 @@ export default function Register() {
               type="password"
               className="grow"
               placeholder="Password"
+              autocomplete="current-password" 
             />
           </label>
           <label className="flex items-center gap-2 grow input input-bordered">
@@ -125,6 +127,7 @@ export default function Register() {
               type="password"
               className="grow"
               placeholder="Confirm your password..."
+              autocomplete="current-password" 
             />
           </label>
 

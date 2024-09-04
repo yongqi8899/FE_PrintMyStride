@@ -72,6 +72,7 @@ export default function Login() {
               type="email"
               className="grow "
               placeholder="Email"
+              autoComplete="email"
             />
           </label>
           <label className="flex items-center gap-2 input input-bordered">
@@ -83,6 +84,7 @@ export default function Login() {
               type="password"
               className="grow"
               placeholder="Password"
+              autocomplete="current-password" 
             />
           </label>
           <button className="btn btn-gradient-blue" disabled={loading}>

@@ -4,12 +4,10 @@ import { lazy, Suspense } from "react";
 import { getAllProducts, getOneProduct } from "@/data/products/loaders.js";
 import { getAllOrders, getOneOrder } from "@/data/orders/loaders.js";
 
-import { createOrder, deleteOrder } from "@/data/orders/actions.js";
 import { createPayment } from "@/data/pays/actions.js";
 
 import { RootLayout, ProtectLayout } from "@/layout";
 import Loading from "@/components/Loading.jsx";
-import { useAuth } from "@/context/index.js";
 
 const About = lazy(() => import("@/pages/About.jsx"));
 const Cart = lazy(() => import("@/pages/Cart.jsx"));
