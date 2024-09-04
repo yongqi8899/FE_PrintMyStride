@@ -8,8 +8,8 @@ import { MdPayment } from "react-icons/md";
 export default function Order() {
   const order = useLoaderData();
   return (
-    <div className="flex flex-col items-center justify-center gap-10 mt-10 m-auto">
-      <div className="flex  flex-col items-center max-w-gl text-xl md:mt-20">
+    <div className="flex flex-col items-center justify-center gap-10 m-auto mt-10">
+      <div className="flex flex-col items-center text-xl max-w-gl md:mt-20">
         <div>
           Status: <p className="badge badge-secondary">{order.status}</p>
         </div>
@@ -157,7 +157,7 @@ export default function Order() {
               />
             </svg>
           </div>
-          <div className="timeline-end timeline-box">Druck your Shoes</div>
+          <div className="timeline-end timeline-box">Print your Shoes</div>
           {["shoe_shipped", "shoe_delivered"].includes(order.status) ? (
             <hr className="bg-green-700" />
           ) : (
