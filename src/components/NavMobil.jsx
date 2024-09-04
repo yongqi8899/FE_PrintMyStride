@@ -70,7 +70,7 @@ export default function NavMobil() {
             <p> Me</p>
           </NavLink>
           <NavLink
-            to={`/orders/user/${user._id}`}
+            to={`/orders/user/${user?._id}`}
             onClick={closeDetails}
             className={({ isActive }) =>
               `text-xl btn btn-ghost ${
