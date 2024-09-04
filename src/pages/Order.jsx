@@ -10,22 +10,25 @@ export default function Order() {
   return (
     <div className="flex flex-col items-center justify-center gap-10 m-auto mt-10">
       <div className="flex flex-col items-center text-xl max-w-gl md:mt-20">
-        <div>
-          Status: <p className="badge badge-secondary">{order.status}</p>
-        </div>
         {order.status == "payed" && (
           <>
-          <p>
-            You will receive the foot impression in 2 days. Please make your
-            foot impression as soon as possible.
-          </p>
-          <MdPayment fontSize="8em" />
+            <div>
+              Status: <p className="badge badge-secondary">Paid</p>
+            </div>
+            <p>
+              You will receive the foot impression in 2 days. Please make your
+              foot impression as soon as possible.
+            </p>
+            <MdPayment fontSize="8em" />
           </>
         )}
         {order.status == "feet_impression" && (
           <>
+            <div>
+              Status: <p className="badge badge-secondary">Foot Impression</p>
+            </div>
             <p>
-              We have received your feet impression. Your custom shoes are now
+              We have received your foot impression. Your custom shoes are now
               being prepared.
             </p>
             <FaShoePrints fontSize="8em" />
@@ -33,6 +36,9 @@ export default function Order() {
         )}
         {order.status == "3D_Druck" && (
           <>
+            <div>
+              Status: <p className="badge badge-secondary">3D Print</p>
+            </div>
             <p>
               Your custom shoes are currently in the 3D printing process. They
               will be ready soon.
@@ -42,12 +48,18 @@ export default function Order() {
         )}
         {order.status == "shoe_shipped" && (
           <>
+            <div>
+              Status: <p className="badge badge-secondary">Shoe Shipped</p>
+            </div>
             <p>Your shoes have been shipped. You will receive them shortly.</p>
             <FaShippingFast fontSize="8em" />
           </>
         )}
         {order.status == "shoe_delivered" && (
           <>
+            <div>
+              Status: <p className="badge badge-secondary">Shoe Delivered</p>
+            </div>
             <p>Your shoes have been delivered. We hope you enjoy them!</p>
             <CiDeliveryTruck fontSize="8em" />
           </>
@@ -89,12 +101,12 @@ export default function Order() {
               />
             </svg>
           </div>
-          <div className="timeline-end timeline-box">payed</div>
+          <div className="timeline-end timeline-box">Paid</div>
           <hr className="bg-green-700" />
         </li>
         <li>
           <hr className="bg-green-700" />
-          <div className="timeline-start timeline-box">Feet impression</div>
+          <div className="timeline-start timeline-box">Foot Impression</div>
           <div className="timeline-middle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -157,7 +169,7 @@ export default function Order() {
               />
             </svg>
           </div>
-          <div className="timeline-end timeline-box">Print your Shoes</div>
+          <div className="timeline-end timeline-box">Shoes Printed</div>
           {["shoe_shipped", "shoe_delivered"].includes(order.status) ? (
             <hr className="bg-green-700" />
           ) : (
@@ -170,7 +182,7 @@ export default function Order() {
           ) : (
             <hr />
           )}
-          <div className="timeline-start timeline-box">Shoes shipped</div>
+          <div className="timeline-start timeline-box">Shoes Shipped</div>
           <div className="timeline-middle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -201,7 +213,7 @@ export default function Order() {
           ) : (
             <hr />
           )}
-          <div className="timeline-start timeline-box">Enjoy your schoes</div>
+          <div className="timeline-end timeline-box">Enjoy :)</div>
           <div className="timeline-middle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
