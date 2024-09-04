@@ -28,7 +28,7 @@ export default function Register() {
       password: "",
       confirmPassword: "",
     });
-  }
+  };
 
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -52,9 +52,9 @@ export default function Register() {
       navigate(location.state?.next || "/");
     } catch (error) {
       toast.error(error.message);
-      if (error.message === "User already exists"){
-        resetForm()
-        navigate("/login")
+      if (error.message === "User already exists") {
+        resetForm();
+        navigate("/login");
       }
     } finally {
       setLoading(false);
@@ -73,9 +73,9 @@ export default function Register() {
   }
 
   return (
-    <div className="flex flex-wrap items-center min-h-[calc(100vh-4rem)] justify-around">
-      <div className="flex flex-col m-auto">
-        <p className="text-6xl font-redressed md:text-8xl">
+    <div className="flex flex-wrap items-center min-h-[calc(100vh-10rem)] justify-around">
+      <div className="w-4/5 p-10 m-auto rounded-2xl md:w-2/5">
+        <p className="text-6xl font-redressed md:text-7xl">
           {" "}
           Get Your Perfect Fit!
         </p>
@@ -115,7 +115,7 @@ export default function Register() {
               type="password"
               className="grow"
               placeholder="Password"
-              autocomplete="current-password" 
+              autocomplete="current-password"
             />
           </label>
           <label className="flex items-center gap-2 grow input input-bordered">
@@ -127,14 +127,14 @@ export default function Register() {
               type="password"
               className="grow"
               placeholder="Confirm your password..."
-              autocomplete="current-password" 
+              autocomplete="current-password"
             />
           </label>
 
           <button className="btn btn-gradient-blue" disabled={loading}>
             Create Account
           </button>
-          <div className="relative flex items-center my-1">
+          {/* <div className="relative flex items-center my-1">
             <div className="flex-grow border-t"></div>
             <span className="flex-shrink mx-4 text-xs">OR</span>
             <div className="flex-grow border-t "></div>
@@ -143,7 +143,7 @@ export default function Register() {
             <div onClick={logWithGoogle}>
               <FcGoogle fontSize="1.5em" />
             </div>
-          </div>
+          </div> */}
           <small>
             Already have an account?{" "}
             <Link to="/login" className="text-primary hover:underline">
