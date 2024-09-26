@@ -1,6 +1,6 @@
 import { useAuth } from "@/context/index.js";
-
-export default function Me() {
+import { memo } from "react";
+const Me = memo(() => {
   const { user } = useAuth();
   if (!user) return <div>loading...</div>;
   return (
@@ -20,4 +20,5 @@ export default function Me() {
       </div>
     )
   );
-}
+});
+export default Me;

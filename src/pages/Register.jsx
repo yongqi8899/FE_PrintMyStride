@@ -1,5 +1,5 @@
 import { useNavigate, Link, Navigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, memo } from "react";
 import { toast } from "react-toastify";
 import { signup } from "@/data/auth/index.js";
 import { useAuth } from "@/context/index.js";
@@ -11,7 +11,7 @@ import { FaUser } from "react-icons/fa";
 
 import { account } from "@/utils/appwrite.js";
 
-export default function Register() {
+const Register = memo(() => {
   const navigate = useNavigate();
   const { isAuthenticated, setCheckSession, setIsAuthenticated } = useAuth();
   const [{ userName, email, password, confirmPassword }, setForm] = useState({
@@ -154,4 +154,5 @@ export default function Register() {
       </div>
     </div>
   );
-}
+});
+export default Register;

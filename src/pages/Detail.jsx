@@ -1,9 +1,10 @@
 import { addToCart, formatCurrency, removeFromCart } from "@/utils/cartUtils";
 import { useCart } from "@/context";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { memo } from "react";
 import Img from "@/components/Img";
 
-const Detail = () => {
+const Detail = memo(() => {
   const navigate = useNavigate();
   const { cart, setCart } = useCart();
 
@@ -79,6 +80,6 @@ const Detail = () => {
       )}
     </>
   );
-};
+});
 
 export default Detail;

@@ -1,5 +1,5 @@
 import { Navigate, Link, useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, memo } from "react";
 import { toast } from "react-toastify";
 import { signin } from "@/data/auth/index.js";
 import { useAuth } from "@/context/index.js";
@@ -9,7 +9,7 @@ import { FaKey } from "react-icons/fa";
 
 import { account } from "@/utils/appwrite.js";
 
-export default function Login() {
+const Login = memo(() => {
   const location = useLocation();
   const { isAuthenticated, setCheckSession, setIsAuthenticated } = useAuth();
   const [{ email, password }, setForm] = useState({
@@ -110,4 +110,5 @@ export default function Login() {
       </div>
     </div>
   );
-}
+});
+export default Login;

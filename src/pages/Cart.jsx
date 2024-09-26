@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { Alert, CartTable } from "@/components";
 import { useCart } from "@/context";
 
-const Cart = () => {
+const Cart = memo(() => {
   const { cart, setCart } = useCart();
 
   if (!cart.length)
@@ -12,6 +13,6 @@ const Cart = () => {
     );
 
   return <CartTable cart={cart} setCart={setCart} />;
-};
+});
 
 export default Cart;

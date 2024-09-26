@@ -1,5 +1,6 @@
+import { memo } from "react";
 import Img from "@/components/Img";
-const ProductsCard = ({ src, title, children }) => {
+const ProductsCard = memo(({ src, title, children }) => {
   return (
     <div className="card glass w-full max-w-md hover:drop-shadow-[0_-5px_5px_#37cdbe] bg-neutral">
       <figure>
@@ -8,5 +9,5 @@ const ProductsCard = ({ src, title, children }) => {
       <div className="card-body">{children}</div>
     </div>
   );
-};
+});
 export default ProductsCard;

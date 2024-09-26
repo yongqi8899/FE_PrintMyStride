@@ -1,8 +1,8 @@
-import { Link,useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import { memo } from "react";
 import ProductsCard from "@/components/ProductsCard";
 import { formatCurrency } from "@/utils/cartUtils";
-import { useCart } from "@/context";
-const Home = () => {
+const Home = memo(() => {
   const products = useLoaderData();
 
   return (
@@ -13,7 +13,9 @@ const Home = () => {
             <Link to={`/products/${product._id}`} className="block">
               <ProductsCard src={product.image} title={product.title}>
                 <div className="flex flex-col m-auto text-center">
-                  <p className="text-2xl font-redressed">{formatCurrency(product.price)}</p>
+                  <p className="text-2xl font-redressed">
+                    {formatCurrency(product.price)}
+                  </p>
                   <p className="text-2xl text-secondary font-redressed">
                     {product.title}
                   </p>
@@ -25,5 +27,5 @@ const Home = () => {
         ))}
     </div>
   );
-};
+});
 export default Home;

@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
 
-const ContactInfo = () => {
+const ContactInfo = memo(() => {
   return (
     <div className="p-6 rounded-lg w-80">
       <h2 className="mb-4 text-2xl text-secondary">Contact Information</h2>
@@ -33,6 +34,6 @@ const ContactInfo = () => {
       </div>
     </div>
   );
-};
+});
 
 export default ContactInfo;

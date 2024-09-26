@@ -1,11 +1,12 @@
 import { useLoaderData } from "react-router-dom";
+import { memo } from "react";
 import { FaShoePrints } from "react-icons/fa";
 import { SiBlueprint } from "react-icons/si";
 import { FaShippingFast } from "react-icons/fa";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { MdPayment } from "react-icons/md";
 
-export default function Order() {
+const Order = memo(() => {
   const order = useLoaderData();
   return (
     <div className="flex flex-col items-center justify-center gap-10 m-auto mt-10">
@@ -236,4 +237,5 @@ export default function Order() {
       </ul>
     </div>
   );
-}
+});
+export default Order;

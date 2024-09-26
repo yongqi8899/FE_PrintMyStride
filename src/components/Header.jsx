@@ -1,8 +1,8 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, memo } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "@/context/index.js";
 
-export default function Header() {
+const Header = memo(() => {
   const { isAuthenticated, logout, user } = useAuth();
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   useEffect(() => {
@@ -188,4 +188,5 @@ export default function Header() {
       </nav>
     </header>
   );
-}
+})
+export default Header

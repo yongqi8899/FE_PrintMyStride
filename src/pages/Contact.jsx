@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import ContactInfo from "@/components/ContactInfo";
 
-const Contact = () => {
+const Contact = memo(() => {
   const [{ firstName, email, lastName, tel, message }, setForm] = useState({
     firstName: "",
     email: "",
@@ -111,5 +111,5 @@ const Contact = () => {
       </div>
     </div>
   );
-};
+});
 export default Contact;

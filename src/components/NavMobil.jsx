@@ -1,9 +1,9 @@
 import Hamburger from "hamburger-react";
 import { useLocation, NavLink } from "react-router-dom";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, memo } from "react";
 import { useAuth } from "@/context/index.js";
 
-export default function NavMobil() {
+const NavMobil = memo(() => {
   const [isOpen, setOpen] = useState(false);
   const { isAuthenticated, logout, user } = useAuth();
 
@@ -162,4 +162,5 @@ export default function NavMobil() {
       )}
     </header>
   );
-}
+})
+export default NavMobil

@@ -1,9 +1,10 @@
-const Alert = ({ message, type }) => {
+import { memo } from "react";
+const Alert = memo(({ message, type }) => {
   const renderIcon = type => {
     const errorSVG = (
       <svg
         xmlns='http://www.w3.org/2000/svg'
-        className='h-6 w-6 shrink-0 stroke-current'
+        className='w-6 h-6 stroke-current shrink-0'
         fill='none'
         viewBox='0 0 24 24'
       >
@@ -20,7 +21,7 @@ const Alert = ({ message, type }) => {
         xmlns='http://www.w3.org/2000/svg'
         fill='none'
         viewBox='0 0 24 24'
-        className='h-6 w-6 shrink-0 stroke-current'
+        className='w-6 h-6 stroke-current shrink-0'
       >
         <path
           strokeLinecap='round'
@@ -33,7 +34,7 @@ const Alert = ({ message, type }) => {
     const successSVG = (
       <svg
         xmlns='http://www.w3.org/2000/svg'
-        className='h-6 w-6 shrink-0 stroke-current'
+        className='w-6 h-6 stroke-current shrink-0'
         fill='none'
         viewBox='0 0 24 24'
       >
@@ -48,7 +49,7 @@ const Alert = ({ message, type }) => {
     const warningSVG = (
       <svg
         xmlns='http://www.w3.org/2000/svg'
-        className='h-6 w-6 shrink-0 stroke-current'
+        className='w-6 h-6 stroke-current shrink-0'
         fill='none'
         viewBox='0 0 24 24'
       >
@@ -91,6 +92,6 @@ const Alert = ({ message, type }) => {
       <span>{message}</span>
     </div>
   );
-};
+});
 
 export default Alert;

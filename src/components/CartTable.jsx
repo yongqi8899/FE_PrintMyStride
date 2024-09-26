@@ -1,3 +1,4 @@
+import { memo } from "react";
 import {
   addToCart,
   formatCurrency,
@@ -9,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { createOrder } from "@/data/orders/actions.js";
 import { useAuth } from "@/context";
 
-const CartTable = ({ cart, setCart }) => {
+const CartTable = memo(({ cart, setCart }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const userId = user._id;
@@ -117,6 +118,6 @@ const CartTable = ({ cart, setCart }) => {
       )}
     </>
   );
-};
+});
 
 export default CartTable;

@@ -1,18 +1,19 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { memo } from "react";
 import { useAuth } from "@/context/index.js";
 import { formatDate } from "@/utils/index.js";
 import Alert from "@/components/Alert.jsx";
 
-export default function Orders() {
+const Orders = memo(() => {
   const orders = useLoaderData();
   const { user } = useAuth();
   const navigate = useNavigate();
   if (!orders.length)
-  return (
-    <div className="mt-5">
-      <Alert message="You have no order. :(" />
-    </div>
-  );
+    return (
+      <div className="mt-5">
+        <Alert message="You have no order. :(" />
+      </div>
+    );
   return (
     <>
       {orders && (
@@ -31,35 +32,37 @@ export default function Orders() {
             </thead>
             <tbody>
               {orders
-              .sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate))
-              .map((order) => (
-                <tr key={order._id}>
-                  <td>{order._id}</td>
+                .sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate))
+                .map((order) => (
+                  <tr key={order._id}>
+                    <td>{order._id}</td>
 
-                  <td>
-                    <span className="badge badge-ghost badge-sm">
-                      {formatDate(order.orderDate)}
-                    </span>
-                  </td>
-                  <td className="align-middle">
-                    <span className="badge badge-secondary">
-                      {order.status}
-                    </span>
-                  </td>
-                  <td>
-                    <button
-                      className="btn btn-ghost btn-xs"
-                      onClick={() => navigate(`/orders/${order._id}`)}
-                    >
-                      details
-                    </button>
-                  </td>
-                </tr>
-              ))}
+                    <td>
+                      <span className="badge badge-ghost badge-sm">
+                        {formatDate(order.orderDate)}
+                      </span>
+                    </td>
+                    <td className="align-middle">
+                      <span className="badge badge-secondary">
+                        {order.status}
+                      </span>
+                    </td>
+                    <td>
+                      <button
+                        className="btn btn-ghost btn-xs"
+                        onClick={() => navigate(`/orders/${order._id}`)}
+                      >
+                        details
+                      </button>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
       )}
     </>
   );
-}
+});
+
+export default Orders;

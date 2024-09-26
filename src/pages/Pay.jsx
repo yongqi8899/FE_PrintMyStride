@@ -1,7 +1,7 @@
-import { useState,  } from "react";
+import { useState, memo } from "react";
 import { useLocation, Form } from "react-router-dom";
 
-export default function PaymentPage() {
+const PaymentPage = memo(() => {
   const cart = JSON.parse(localStorage.getItem("cart"));
 
   const location = useLocation();
@@ -30,16 +30,16 @@ export default function PaymentPage() {
   };
 
   return (
-    <div className="container mx-auto p-8">
-      <h2 className="text-2xl font-bold mb-8">Payment Information</h2>
+    <div className="container p-8 mx-auto">
+      <h2 className="mb-8 text-2xl font-bold">Payment Information</h2>
       <Form method="POST">
         <div>
-          <label className="block text-sm font-medium hidden"></label>
+          <label className="hidden block text-sm font-medium"></label>
           <input
             name="orderId"
             onChange={handleChange}
             type="text"
-            className="w-full p-2 mt-2 border rounded hidden"
+            className="hidden w-full p-2 mt-2 border rounded"
             placeholder="Full Name"
             defaultValue={orderId}
           />
@@ -170,4 +170,4 @@ export default function PaymentPage() {
       </Form>
     </div>
   );
-}
+})

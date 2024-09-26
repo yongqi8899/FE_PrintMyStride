@@ -1,6 +1,7 @@
+import { memo } from "react";
 import img from "@/assets/img/shoe.png";
 import { Link } from "react-router-dom";
-const About = () => {
+const About = memo(() => {
   return (
     <div className="flex flex-wrap m-10 md:flex-nowrap">
       <div className="w-full md:w-1/2">
@@ -61,5 +62,5 @@ const About = () => {
       </div>
     </div>
   );
-};
+});
 export default About;

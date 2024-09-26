@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, memo } from "react";
 
 import { getAllProducts, getOneProduct } from "@/data/products/loaders.js";
 import { getAllOrders, getOneOrder } from "@/data/orders/loaders.js";
@@ -22,7 +22,7 @@ const Order = lazy(() => import("@/pages/Order.jsx"));
 const Orders = lazy(() => import("@/pages/Orders.jsx"));
 const Pay = lazy(() => import("@/pages/Pay.jsx"));
 
-export default function App() {
+const App = memo(() =>{
   const router = createBrowserRouter([
     {
       path: "/",
@@ -147,4 +147,5 @@ export default function App() {
     },
   ]);
   return <RouterProvider router={router} />;
-}
+})
+export default App;

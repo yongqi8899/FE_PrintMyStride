@@ -1,4 +1,5 @@
-const Img = ({ src, title, children }) => {
+import { memo } from "react";
+const Img = memo(({ src, title, children }) => {
   return (
       <figure className="overflow-hidden bg-secondary">
         <img
@@ -12,5 +13,5 @@ const Img = ({ src, title, children }) => {
         />
       </figure>
   );
-};
+});
 export default Img;
