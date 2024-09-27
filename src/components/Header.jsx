@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect, memo } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "@/context/index.js";
+import { navLinks } from "@/constants/index.js";  
 
 const Header = memo(() => {
   const { isAuthenticated, logout, user } = useAuth();
@@ -34,54 +35,20 @@ const Header = memo(() => {
       </div>
       <nav className="flex-none">
         <ul className="gap-8 navbar">
-          <li>
-            {" "}
-            <NavLink
-              to="/"
-              role="button"
-              className={({ isActive }) =>
-                `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
-              }
-            >
-              Products
-            </NavLink>
-          </li>
-          <li>
-            {" "}
-            <NavLink
-              to="/about"
-              role="button"
-              className={({ isActive }) =>
-                `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
-              }
-            >
-              About
-            </NavLink>
-          </li>
-          <li>
-            {" "}
-            <NavLink
-              to="/contact"
-              role="button"
-              className={({ isActive }) =>
-                `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
-              }
-            >
-              Contact
-            </NavLink>
-          </li>
-          <li>
-            {" "}
-            <NavLink
-              to="/cart"
-              role="button"
-              className={({ isActive }) =>
-                `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
-              }
-            >
-              Cart
-            </NavLink>
-          </li>
+          {navLinks.map((link) => (
+            <li key={link.id}>
+              <NavLink
+                to={link.path}
+                role="button"
+                className={({ isActive }) =>
+                  `${isActive ? "text-secondary" : ""} text-xl btn btn-ghost`
+                }
+              >
+                {link.title}
+              </NavLink>
+            </li>
+          ))}
+  
           <li>
             {isAuthenticated ? (
               <details

@@ -2,6 +2,7 @@ import Hamburger from "hamburger-react";
 import { useLocation, NavLink } from "react-router-dom";
 import { useRef, useState, useEffect, memo } from "react";
 import { useAuth } from "@/context/index.js";
+import { navLinks } from "@/constants/index.js";
 
 const NavMobil = memo(() => {
   const [isOpen, setOpen] = useState(false);
@@ -106,61 +107,25 @@ const NavMobil = memo(() => {
       </div>
       {isOpen && (
         <ul className="fixed top-0 left-0 flex flex-col items-center justify-center w-screen h-full gap-8 text-xl text-center z-199 bg-neutral">
-          <li>
-            {" "}
-            <NavLink
-              to="/"
-              onClick={() => setOpen(false)}
-              role="button"
-              className={({ isActive }) =>
-                isActive ? "text-secondary text-2xl" : "text-xl"
-              }
-            >
-              Products
-            </NavLink>
-          </li>
-          <li>
-            {" "}
-            <NavLink
-              to="/about"
-              onClick={() => setOpen(false)}
-              role="button"
-              className={({ isActive }) =>
-                isActive ? "text-secondary" : "text-xl"
-              }
-            >
-              About
-            </NavLink>
-          </li>
-          <li>
-            {" "}
-            <NavLink
-              to="/contact"
-              onClick={() => setOpen(false)}
-              role="button"
-              className={({ isActive }) =>
-                isActive ? "text-secondary" : "text-xl"
-              }
-            >
-              Contact
-            </NavLink>
-          </li>
-          <li>
-            {" "}
-            <NavLink
-              to="/cart"
-              onClick={() => setOpen(false)}
-              role="button"
-              className={({ isActive }) =>
-                isActive ? "text-secondary" : "text-xl"
-              }
-            >
-              Cart
-            </NavLink>
-          </li>
+          {navLinks.map(({ id, title, path }) => {
+            return (
+              <li key={id}>
+                <NavLink
+                  to={path}
+                  onClick={() => setOpen(false)}
+                  role="button"
+                  className={({ isActive }) =>
+                    isActive ? "text-secondary text-2xl" : "text-xl"
+                  }
+                >
+                  {title}
+                </NavLink>
+              </li>
+            );
+          })}
         </ul>
       )}
     </header>
   );
-})
-export default NavMobil
+});
+export default NavMobil;
