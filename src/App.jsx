@@ -3,26 +3,22 @@ import { lazy, Suspense, memo } from "react";
 
 import { getAllProducts, getOneProduct } from "@/data/products/loaders.js";
 import { getAllOrders, getOneOrder } from "@/data/orders/loaders.js";
-
 import { createPayment } from "@/data/pays/actions.js";
 
-import { RootLayout, ProtectLayout } from "@/layout";
+import { RootLayout } from "@/layout";
 import Loading from "@/components/Loading.jsx";
 
-const About = lazy(() => import("@/pages/About.jsx"));
-const Cart = lazy(() => import("@/pages/Cart.jsx"));
-const Contact = lazy(() => import("@/pages/Contact.jsx"));
-const Detail = lazy(() => import("@/pages/Detail.jsx"));
-const ErrorPage = lazy(() => import("@/pages/ErrorPage.jsx"));
-const Home = lazy(() => import("@/pages/Home.jsx"));
-const Login = lazy(() => import("@/pages/Login.jsx"));
-const Me = lazy(() => import("@/pages/Me.jsx"));
-const Register = lazy(() => import("@/pages/Register.jsx"));
-const Order = lazy(() => import("@/pages/Order.jsx"));
-const Orders = lazy(() => import("@/pages/Orders.jsx"));
-const Pay = lazy(() => import("@/pages/Pay.jsx"));
+// lazyLoad
+const lazyLoad = (importFunc) => {
+  const LazyComponent = lazy(importFunc);
+  return (props) => (
+    <Suspense fallback={<Loading />}>
+      <LazyComponent {...props} />
+    </Suspense>
+  );
+};
 
-const App = memo(() =>{
+const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
@@ -31,121 +27,64 @@ const App = memo(() =>{
       children: [
         {
           index: true,
-          element: (
-            <Suspense fallback={<Loading />}>
-              <Home />
-            </Suspense>
-          ),
+          element: lazyLoad(() => import("@/pages/Home"))(),
           loader: getAllProducts,
         },
         {
           path: "/products/:id",
-          element: (
-            <Suspense fallback={<Loading />}>
-              <Detail />
-            </Suspense>
-          ),
-          loader: ({ params }) => {
-            return getOneProduct(params.id);
-          },
+          element: lazyLoad(() => import("@/pages/Detail"))(),
+          loader: ({ params }) => getOneProduct(params.id),
         },
         {
           path: "/login",
-          element: (
-            <Suspense fallback={<Loading />}>
-              <Login />
-            </Suspense>
-          ),
+          element: lazyLoad(() => import("@/pages/Login"))(),
         },
         {
           path: "/register",
-          element: (
-            <Suspense fallback={<Loading />}>
-              <Register />
-            </Suspense>
-          ),
+          element: lazyLoad(() => import("@/pages/Register"))(),
         },
         {
           path: "/about",
-          element: (
-            <Suspense fallback={<Loading />}>
-              <About />
-            </Suspense>
-          ),
+          element: lazyLoad(() => import("@/pages/About"))(),
         },
         {
           path: "/contact",
-          element: (
-            <Suspense fallback={<Loading />}>
-              <Contact />
-            </Suspense>
-          ),
+          element: lazyLoad(() => import("@/pages/Contact"))(),
         },
         {
-          index: "",
-          element: (
-            <Suspense fallback={<Loading />}>
-              <ProtectLayout />
-            </Suspense>
-          ),
+          element: lazyLoad(() => import("@/layout/ProtectLayout"))(),
           children: [
             {
               path: "/cart",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Cart />
-                </Suspense>
-              ),
+              element: lazyLoad(() => import("@/pages/Cart"))(),
             },
             {
               path: "/me",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Me />
-                </Suspense>
-              ),
+              element: lazyLoad(() => import("@/pages/Me"))(),
             },
             {
               path: "/orders/user/:userId",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Orders />
-                </Suspense>
-              ),
-              loader: ({ params }) => {
-                return getAllOrders(params.userId);
-              },
+              element: lazyLoad(() => import("@/pages/Orders"))(),
+              loader: ({ params }) => getAllOrders(params.userId),
             },
             {
               path: "/orders/:id",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Order />
-                </Suspense>
-              ),
-              loader: ({ params }) => {
-                return getOneOrder(params.id);
-              },
+              element: lazyLoad(() => import("@/pages/Order"))(),
+              loader: ({ params }) => getOneOrder(params.id),
             },
             {
               path: "/pay",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Pay />
-                </Suspense>
-              ),
+              element: lazyLoad(() => import("@/pages/Pay"))(),
               action: createPayment,
             },
           ],
         },
       ],
-      errorElement: (
-        <Suspense fallback={<Loading />}>
-          <ErrorPage />
-        </Suspense>
-      ),
+      errorElement: lazyLoad(() => import("@/pages/ErrorPage"))(),
     },
   ]);
+
   return <RouterProvider router={router} />;
-})
+};
+
 export default App;
