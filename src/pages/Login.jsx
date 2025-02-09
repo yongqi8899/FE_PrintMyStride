@@ -3,11 +3,8 @@ import { useState, memo } from "react";
 import { toast } from "react-toastify";
 import { signin } from "@/data/auth/index.js";
 import { useAuth } from "@/context/index.js";
-import { FcGoogle } from "react-icons/fc";
 import { MdEmail } from "react-icons/md";
 import { FaKey } from "react-icons/fa";
-
-import { account } from "@/utils/appwrite.js";
 
 const Login = memo(() => {
   const location = useLocation();
@@ -42,13 +39,6 @@ const Login = memo(() => {
     }
   };
 
-  async function logWithGoogle() {
-    await account.createOAuth2Session(
-      "google",
-      "http://localhost:5173/",
-      "http://localhost:5173/fail"
-    );
-  }
 
   if (isAuthenticated) {
     return <Navigate to={location.state?.next || "/"} />;
@@ -89,17 +79,6 @@ const Login = memo(() => {
           <button className="btn btn-gradient-blue" disabled={loading}>
             Login
           </button>
-          {/* <div className="relative flex items-center my-1">
-            <div className="flex-grow border-t"></div>
-            <span className="flex-shrink mx-4 text-xs">OR</span>
-            <div className="flex-grow border-t "></div>
-          </div>
-          <div className="flex justify-center">
-            <div onClick={logWithGoogle}>
-              <FcGoogle fontSize="1.5em" />
-            </div>
-          </div> */}
-
           <small>
             Don&apos;t have an account?{" "}
             <Link to="/register" className="text-primary hover:underline">

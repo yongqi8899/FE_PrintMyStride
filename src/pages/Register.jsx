@@ -9,7 +9,6 @@ import { MdEmail } from "react-icons/md";
 import { FaKey } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 
-import { account } from "@/utils/appwrite.js";
 
 const Register = memo(() => {
   const navigate = useNavigate();
@@ -61,13 +60,7 @@ const Register = memo(() => {
     }
   };
 
-  async function logWithGoogle() {
-    await account.createOAuth2Session(
-      "google",
-      "http://localhost:5173/",
-      "http://localhost:5173/fail"
-    );
-  }
+
   if (isAuthenticated) {
     return <Navigate to={location.state?.next || "/"} />;
   }
@@ -134,16 +127,6 @@ const Register = memo(() => {
           <button className="btn btn-gradient-blue" disabled={loading}>
             Create Account
           </button>
-          {/* <div className="relative flex items-center my-1">
-            <div className="flex-grow border-t"></div>
-            <span className="flex-shrink mx-4 text-xs">OR</span>
-            <div className="flex-grow border-t "></div>
-          </div>
-          <div className="flex justify-center">
-            <div onClick={logWithGoogle}>
-              <FcGoogle fontSize="1.5em" />
-            </div>
-          </div> */}
           <small>
             Already have an account?{" "}
             <Link to="/login" className="text-primary hover:underline">
